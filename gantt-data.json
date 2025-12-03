@@ -465,5 +465,18 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:53:09.850Z"
+  },
+  {
+    "id": "1764780967191",
+    "name": "Implemented Search For Records/Collections",
+    "description": "Added ability to search for specific information in records/documents in each page along with filtering",
+    "startDate": "2025-11-30",
+    "endDate": "2025-11-30",
+    "isOngoing": false,
+    "color": "#9b2c92",
+    "progress": 100,
+    "priority": "medium",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:56:07.191Z"
   }
 ]
