@@ -370,7 +370,7 @@
     "endDate": "2025-11-29",
     "isOngoing": false,
     "color": "#48b828",
-    "progress": 0,
+    "progress": 100,
     "priority": "high",
     "dependencies": [],
     "createdAt": "2025-12-03T16:42:07.621Z"
