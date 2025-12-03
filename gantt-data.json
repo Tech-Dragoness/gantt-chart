@@ -125,7 +125,7 @@
       "1764775708362"
     ],
     "description": "Added two NoSQL databases (MongoDB andd TinyDB) and tested if context switching is correctly executed and there are no clashes.",
-    "endDate": "2025-11-28",
+    "endDate": "2025-11-30",
     "id": "1764776388660",
     "isOngoing": false,
     "name": "Adding Test NoSQL DBs",
