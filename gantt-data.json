@@ -426,5 +426,18 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:50:45.990Z"
+  },
+  {
+    "id": "1764780725196",
+    "name": "Providing Connection Links",
+    "description": "Checked how to access the databases created in code. Provided connection links for each db along with instructions and test code.",
+    "startDate": "2025-11-30",
+    "endDate": "2025-11-30",
+    "isOngoing": false,
+    "color": "#5a0707",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:52:05.196Z"
   }
 ]
