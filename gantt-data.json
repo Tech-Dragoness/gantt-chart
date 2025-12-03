@@ -361,5 +361,18 @@
     "priority": "medium",
     "progress": 100,
     "startDate": "2025-11-29"
+  },
+  {
+    "id": "1764780127621",
+    "name": "Fix Column Rename Issue",
+    "description": "Fix the issue of columns containing data refusing to be renamed because they need to be dropped first",
+    "startDate": "2025-11-29",
+    "endDate": "2025-11-29",
+    "isOngoing": false,
+    "color": "#48b828",
+    "progress": 0,
+    "priority": "high",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:42:07.621Z"
   }
 ]
