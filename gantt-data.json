@@ -491,5 +491,18 @@
     "priority": "low",
     "dependencies": [],
     "createdAt": "2025-12-03T16:57:10.293Z"
+  },
+  {
+    "id": "1764781077812",
+    "name": "Testing Crucial Functionalities",
+    "description": "Test for procedures, group by, order by, having clause, aggregate functions (Like AVG, SUM, etc)), joins, functions",
+    "startDate": "2025-12-02",
+    "endDate": "2025-12-03",
+    "isOngoing": false,
+    "color": "#cb20a6",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:57:57.812Z"
   }
 ]
