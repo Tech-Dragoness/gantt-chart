@@ -262,5 +262,18 @@
     "priority": "high",
     "dependencies": [],
     "createdAt": "2025-12-03T16:11:49.329Z"
+  },
+  {
+    "id": "1764778366059",
+    "name": "Regression Testing",
+    "description": "Performed rigorous regression testing at all steps, at the end of every requirement completion.",
+    "startDate": "2025-11-15",
+    "endDate": "",
+    "isOngoing": true,
+    "color": "#ec2222",
+    "progress": 70,
+    "priority": "medium",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:12:46.059Z"
   }
 ]
