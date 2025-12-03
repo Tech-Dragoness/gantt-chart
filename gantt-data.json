@@ -504,5 +504,20 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:57:57.812Z"
+  },
+  {
+    "id": "1764781199281",
+    "name": "Fix MongoDB's Search Fields Issue",
+    "description": "Fixed issue of MongoDB not showing all the fields in the search bar's filter",
+    "startDate": "2025-12-03",
+    "endDate": "2025-12-03",
+    "isOngoing": false,
+    "color": "#f7963b",
+    "progress": 100,
+    "priority": "low",
+    "dependencies": [
+      "1764780967191"
+    ],
+    "createdAt": "2025-12-03T16:59:59.281Z"
   }
 ]
