@@ -79,5 +79,18 @@
     "priority": "medium",
     "dependencies": [],
     "createdAt": "2025-12-03T15:31:09.465Z"
+  },
+  {
+    "id": "1764776032507",
+    "name": "Adding Plug-And-Play Functionality",
+    "description": "Added db_registry for automatically detecting handlers for plug and play experience (Programmers just need to add a file with *_handler.py and it would automatically be detected and taken as new database type, is the programmer's responsibility to follow guidelines such as stating what type of database it is and it's name and add in all the abstract methods needed)",
+    "startDate": "2025-11-24",
+    "endDate": "2025-11-25",
+    "isOngoing": false,
+    "color": "#14bd4c",
+    "progress": 100,
+    "priority": "high",
+    "dependencies": [],
+    "createdAt": "2025-12-03T15:33:52.507Z"
   }
 ]
