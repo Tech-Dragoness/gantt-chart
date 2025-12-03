@@ -402,19 +402,6 @@
     "createdAt": "2025-12-03T16:49:49.522Z"
   },
   {
-    "id": "1764780645990",
-    "name": "Confirming Join Functionality",
-    "description": "Checked and confirmed functionality of joins",
-    "startDate": "2025-11-30",
-    "endDate": "2025-11-30",
-    "isOngoing": false,
-    "color": "#2d8aa9",
-    "progress": 100,
-    "priority": "critical",
-    "dependencies": [],
-    "createdAt": "2025-12-03T16:50:45.990Z"
-  },
-  {
     "color": "#351178",
     "createdAt": "2025-12-03T16:11:49.329Z",
     "dependencies": [],
@@ -426,5 +413,18 @@
     "priority": "high",
     "progress": 50,
     "startDate": "2025-11-29"
+  },
+  {
+    "id": "1764780645990",
+    "name": "Confirming Join Functionality",
+    "description": "Checked and confirmed functionality of joins",
+    "startDate": "2025-11-30",
+    "endDate": "2025-11-30",
+    "isOngoing": false,
+    "color": "#2d8aa9",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:50:45.990Z"
   }
 ]
