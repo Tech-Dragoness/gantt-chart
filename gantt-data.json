@@ -321,7 +321,7 @@
     "id": "1764778807977",
     "name": "Fix Modify And Delete Buttons Bug",
     "description": "Fix the issue of modify and delete button on documents not working in MongoDB.",
-    "startDate": "2025-10-29",
+    "startDate": "2025-11-29",
     "endDate": "2025-11-30",
     "isOngoing": false,
     "color": "#3bd8f7",
@@ -329,5 +329,20 @@
     "priority": "medium",
     "dependencies": [],
     "createdAt": "2025-12-03T16:20:07.977Z"
+  },
+  {
+    "id": "1764779017906",
+    "name": "Fix Empty Collection Bug",
+    "description": "Fix the issue of database getting deleted when it's created and user immediately goes back to list of databases without creating a collection in MongoDB.",
+    "startDate": "2025-11-27",
+    "endDate": "2025-11-28",
+    "isOngoing": false,
+    "color": "#3bf761",
+    "progress": 100,
+    "priority": "medium",
+    "dependencies": [
+      "1764776388660"
+    ],
+    "createdAt": "2025-12-03T16:23:37.906Z"
   }
 ]
