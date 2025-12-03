@@ -231,6 +231,21 @@
     "startDate": "2025-11-29"
   },
   {
+    "color": "#483bf7",
+    "createdAt": "2025-12-03T16:16:39.901Z",
+    "dependencies": [
+      "1764776388660"
+    ],
+    "description": "Fix the issue of 0 documents showing in collection_list",
+    "endDate": "2025-11-30",
+    "id": "1764778599901",
+    "isOngoing": false,
+    "name": "Fix Documents Number Bug",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-11-29"
+  },
+  {
     "color": "#6d17a6",
     "createdAt": "2025-12-03T15:49:15.252Z",
     "dependencies": [],
@@ -294,21 +309,6 @@
     "priority": "low",
     "progress": 100,
     "startDate": "2025-12-01"
-  },
-  {
-    "color": "#483bf7",
-    "createdAt": "2025-12-03T16:16:39.901Z",
-    "dependencies": [
-      "1764776388660"
-    ],
-    "description": "Fix the issue of 0 documents showing in collection_list",
-    "endDate": "2025-11-30",
-    "id": "1764778599901",
-    "isOngoing": false,
-    "name": "Fix Documents Number Bug",
-    "priority": "low",
-    "progress": 100,
-    "startDate": "2025-11-29"
   },
   {
     "id": "1764780127621",
