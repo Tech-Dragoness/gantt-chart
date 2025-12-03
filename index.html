@@ -277,6 +277,9 @@
             color: #9ca3af;
             font-size: 16px;
             user-select: none;
+            z-index: 10;
+            background: white;
+            border-radius: 4px;
         }
 
         .drag-handle:active {
@@ -284,7 +287,15 @@
         }
 
         .task-info .task-name {
-            padding-left: 24px;
+            padding-left: 28px;
+        }
+
+        .task-info .task-dates {
+            padding-left: 28px;
+        }
+
+        .task-info > div:last-child {
+            padding-left: 28px;
         }
 
         .task-row.dragging {
