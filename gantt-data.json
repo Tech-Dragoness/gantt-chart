@@ -145,5 +145,18 @@
     "priority": "medium",
     "dependencies": [],
     "createdAt": "2025-12-03T15:44:45.186Z"
+  },
+  {
+    "id": "1764776810787",
+    "name": "Adding Minute Control Over Opening System",
+    "description": "Ability to view or create and open a database in a specific database type with a command on the cmd.",
+    "startDate": "2025-11-24",
+    "endDate": "2025-11-25",
+    "isOngoing": false,
+    "color": "#185ac3",
+    "progress": 100,
+    "priority": "high",
+    "dependencies": [],
+    "createdAt": "2025-12-03T15:46:50.788Z"
   }
 ]
