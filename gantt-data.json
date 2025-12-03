@@ -129,6 +129,19 @@
     "startDate": "2025-11-26"
   },
   {
+    "color": "#cc3dd6",
+    "createdAt": "2025-12-03T16:14:31.205Z",
+    "dependencies": [],
+    "description": "Fixed issue of sql databases creating databases in the same folder (Causing unrelated dbs to show up in SQLite list of dbs)",
+    "endDate": "2025-11-20",
+    "id": "1764778471205",
+    "isOngoing": false,
+    "name": "Fix Bug In SQLite",
+    "priority": "high",
+    "progress": 100,
+    "startDate": "2025-11-20"
+  },
+  {
     "color": "#f79f3b",
     "createdAt": "2025-12-03T15:39:48.660Z",
     "dependencies": [
@@ -171,19 +184,6 @@
     "priority": "high",
     "progress": 100,
     "startDate": "2025-11-24"
-  },
-  {
-    "color": "#cc3dd6",
-    "createdAt": "2025-12-03T16:14:31.205Z",
-    "dependencies": [],
-    "description": "Fixed issue of sql databases creating databases in the same folder (Causing unrelated dbs to show up in SQLite list of dbs)",
-    "endDate": "2025-11-20",
-    "id": "1764778471205",
-    "isOngoing": false,
-    "name": "Fix Bug In SQLite",
-    "priority": "high",
-    "progress": 100,
-    "startDate": "2025-11-20"
   },
   {
     "color": "#6d17a6",
