@@ -216,19 +216,6 @@
     "startDate": "2025-11-29"
   },
   {
-    "color": "#6d17a6",
-    "createdAt": "2025-12-03T15:49:15.252Z",
-    "dependencies": [],
-    "description": "Added PostgreSQL and MySQL databases to supported SQL databases.",
-    "endDate": "2025-12-01",
-    "id": "1764776955252",
-    "isOngoing": false,
-    "name": "Adding MySQL and PostgreSQL Support",
-    "priority": "low",
-    "progress": 100,
-    "startDate": "2025-11-27"
-  },
-  {
     "color": "#3bd8f7",
     "createdAt": "2025-12-03T16:20:07.977Z",
     "dependencies": [
@@ -242,6 +229,19 @@
     "priority": "medium",
     "progress": 100,
     "startDate": "2025-11-29"
+  },
+  {
+    "color": "#6d17a6",
+    "createdAt": "2025-12-03T15:49:15.252Z",
+    "dependencies": [],
+    "description": "Added PostgreSQL and MySQL databases to supported SQL databases.",
+    "endDate": "2025-12-01",
+    "id": "1764776955252",
+    "isOngoing": false,
+    "name": "Adding MySQL and PostgreSQL Support",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-11-27"
   },
   {
     "color": "#7967bc",
@@ -296,6 +296,21 @@
     "startDate": "2025-12-01"
   },
   {
+    "color": "#483bf7",
+    "createdAt": "2025-12-03T16:16:39.901Z",
+    "dependencies": [
+      "1764776388660"
+    ],
+    "description": "Fix the issue of 0 documents showing in collection_list",
+    "endDate": "2025-11-30",
+    "id": "1764778599901",
+    "isOngoing": false,
+    "name": "Fix Documents Number Bug",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-11-29"
+  },
+  {
     "color": "#ec4b4b",
     "createdAt": "2025-12-03T16:07:48.183Z",
     "dependencies": [],
@@ -346,21 +361,6 @@
     "priority": "medium",
     "progress": 70,
     "startDate": "2025-11-15"
-  },
-  {
-    "color": "#483bf7",
-    "createdAt": "2025-12-03T16:16:39.901Z",
-    "dependencies": [
-      "1764776388660"
-    ],
-    "description": "Fix the issue of 0 documents showing in collection_list",
-    "endDate": "2025-11-30",
-    "id": "1764778599901",
-    "isOngoing": false,
-    "name": "Fix Documents Number Bug",
-    "priority": "low",
-    "progress": 100,
-    "startDate": "2025-11-29"
   },
   {
     "id": "1764780127621",
