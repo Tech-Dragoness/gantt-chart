@@ -281,6 +281,7 @@
             flex: 1;
             position: relative;
             padding: 15px 0;
+            overflow: visible;
         }
 
         .task-bar {
@@ -303,6 +304,7 @@
         .task-bar:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 10;
         }
 
         .task-bar.ongoing::after {
@@ -329,6 +331,7 @@
             bottom: 0;
             background: rgba(255,255,255,0.3);
             border-radius: 4px 0 0 4px;
+            pointer-events: none;
         }
 
         .task-actions {
@@ -384,6 +387,67 @@
 
         .chart-container.exporting .chart-controls {
             display: none !important;
+        }
+
+        .dependency-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 8px;
+            margin-bottom: 6px;
+            background: #f9fafb;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .dependency-item:hover {
+            background: #f3f4f6;
+        }
+
+        .dependency-item input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
+
+        .dependency-item label {
+            flex: 1;
+            cursor: pointer;
+            margin: 0;
+            font-size: 14px;
+        }
+
+        .dependency-line {
+            position: absolute;
+            height: 2px;
+            background: #6b7280;
+            transform-origin: left center;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .dependency-arrow {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 6px solid #6b7280;
+            border-top: 4px solid transparent;
+            border-bottom: 4px solid transparent;
+            right: -6px;
+            top: -3px;
+        }
+
+        .task-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: #e0e7ff;
+            color: #4338ca;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            margin-top: 4px;
         }
 
         @media print {
@@ -477,10 +541,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="dependencies">Dependencies</label>
-                    <select id="dependencies" multiple style="height: 100px;">
-                    </select>
-                    <small style="color: #6b7280;">Hold Ctrl/Cmd to select multiple tasks</small>
+                    <label for="dependencies">Dependencies (tasks that must complete before this one starts)</label>
+                    <div id="dependenciesContainer" style="max-height: 150px; overflow-y: auto; border: 1px solid #d1d5db; border-radius: 6px; padding: 10px;">
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -621,21 +684,51 @@
     }
 
     function updateDependenciesDropdown() {
-        const select = document.getElementById('dependencies');
-        select.innerHTML = '';
-       
+        const container = document.getElementById('dependenciesContainer');
+        container.innerHTML = '';
+        
+        if (tasks.length === 0 || (tasks.length === 1 && editingTaskId)) {
+            container.innerHTML = '<div style="color: #9ca3af; font-size: 13px;">No other tasks available</div>';
+            return;
+        }
+        
+        const currentTask = editingTaskId ? tasks.find(t => t.id === editingTaskId) : null;
+        const currentDependencies = currentTask?.dependencies || [];
+        
         tasks.forEach(task => {
             if (task.id !== editingTaskId) {
-                const option = document.createElement('option');
-                option.value = task.id;
-                option.textContent = task.name;
-                select.appendChild(option);
+                const div = document.createElement('div');
+                div.className = 'dependency-item';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `dep_${task.id}`;
+                checkbox.value = task.id;
+                checkbox.checked = currentDependencies.includes(task.id);
+                
+                const label = document.createElement('label');
+                label.htmlFor = `dep_${task.id}`;
+                label.textContent = task.name;
+                
+                div.appendChild(checkbox);
+                div.appendChild(label);
+                div.onclick = (e) => {
+                    if (e.target !== checkbox) {
+                        checkbox.checked = !checkbox.checked;
+                    }
+                };
+                
+                container.appendChild(div);
             }
         });
     }
 
     function saveTask(e) {
         e.preventDefault();
+        
+        // Get selected dependencies from checkboxes
+        const dependencyCheckboxes = document.querySelectorAll('#dependenciesContainer input[type="checkbox"]:checked');
+        const selectedDependencies = Array.from(dependencyCheckboxes).map(cb => cb.value);
        
         const formData = {
             name: document.getElementById('taskName').value.trim(),
@@ -646,7 +739,7 @@
             color: document.getElementById('taskColor').value,
             progress: parseInt(document.getElementById('progress').value) || 0,
             priority: document.getElementById('priority').value,
-            dependencies: Array.from(document.getElementById('dependencies').selectedOptions).map(o => o.value)
+            dependencies: selectedDependencies
         };
 
         if (editingTaskId) {
@@ -732,7 +825,7 @@
 
         const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
 
-        tasks.forEach(task => {
+        tasks.forEach((task, taskIndex) => {
             const startDate = new Date(task.startDate);
             const endDate = task.isOngoing ? new Date() : new Date(task.endDate || task.startDate);
             const startOffset = Math.ceil((startDate - minDate) / 86400000);
@@ -742,13 +835,59 @@
             html += '<div class="task-info">';
             html += `<div class="task-name">${priorityEmoji[task.priority] || ''} ${task.name}</div>`;
             html += `<div class="task-dates">${formatDate(task.startDate)} → ${task.isOngoing ? 'Ongoing' : formatDate(task.endDate || '')}</div>`;
+            
+            // Show dependency badges
+            if (task.dependencies && task.dependencies.length > 0) {
+                html += '<div>';
+                task.dependencies.forEach(depId => {
+                    const depTask = tasks.find(t => t.id === depId);
+                    if (depTask) {
+                        html += `<span class="task-badge">⚡ ${depTask.name}</span> `;
+                    }
+                });
+                html += '</div>';
+            }
+            
             html += '</div>';
             html += '<div class="task-timeline">';
+            
+            // Draw dependency lines
+            if (task.dependencies && task.dependencies.length > 0) {
+                task.dependencies.forEach(depId => {
+                    const depTask = tasks.find(t => t.id === depId);
+                    if (depTask) {
+                        const depIndex = tasks.findIndex(t => t.id === depId);
+                        const depEndDate = depTask.isOngoing ? new Date() : new Date(depTask.endDate || depTask.startDate);
+                        const depEndOffset = Math.ceil((depEndDate - minDate) / 86400000);
+                        const depDuration = Math.ceil((depEndDate - new Date(depTask.startDate)) / 86400000) + 1;
+                        
+                        // Calculate line positions
+                        const fromX = depEndOffset * dayWidth + depDuration * dayWidth;
+                        const toX = startOffset * dayWidth;
+                        const fromY = (depIndex - taskIndex) * 60 + 15; // Relative Y position
+                        
+                        if (fromX < toX) {
+                            const length = toX - fromX;
+                            html += `<div class="dependency-line" style="left:${fromX}px; width:${length}px; top:${fromY}px;">`;
+                            html += '<div class="dependency-arrow"></div>';
+                            html += '</div>';
+                        }
+                    }
+                });
+            }
+            
+            // Calculate the date-based width
+            const dateBasedWidth = duration * dayWidth;
+            
+            // Create a temporary element to measure text width
+            const textContent = `${task.name} (${task.progress}%)`;
+            const minWidth = Math.max(dateBasedWidth, textContent.length * 7 + 40); // Approximate text width
+            
             html += `<div class="task-bar ${task.isOngoing ? 'ongoing' : ''}" 
-                     style="left:${startOffset * dayWidth}px; width:${duration * dayWidth}px; background:${task.color};" 
+                     style="left:${startOffset * dayWidth}px; width:${minWidth}px; background:${task.color};" 
                      onclick="openModal('${task.id}')">`;
-            html += `<div class="progress-bar" style="width:${task.progress}%"></div>`;
-            html += `<span>${task.name} (${task.progress}%)</span>`;
+            html += `<div class="progress-bar" style="width:${(task.progress / 100) * (dateBasedWidth / minWidth) * 100}%"></div>`;
+            html += `<span>${textContent}</span>`;
             html += '<div class="task-actions">';
             html += `<button class="btn btn-icon btn-sm" onclick="event.stopPropagation(); openModal('${task.id}')">✏️</button>`;
             html += `<button class="btn btn-icon btn-sm" onclick="event.stopPropagation(); deleteTask('${task.id}')">❌</button>`;
@@ -776,56 +915,55 @@
                 useCORS: true,
                 allowTaint: true,
                 width: chart.scrollWidth,
-                height: chart.scrollHeight,
-                scrollX: 0,
-                scrollY: 0
-            });
-
-            const link = document.createElement('a');
-            link.download = `gantt-chart-${new Date().toISOString().slice(0,10)}.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
-        } catch (err) {
-            alert('Image export failed — maybe try zooming out a bit?');
-            console.error(err);
-        } finally {
-            chart.classList.remove('exporting');
-            chart.style.overflow = 'auto';
-        }
+height: chart.scrollHeight,
+scrollX: 0,
+scrollY: 0
+});
+        const link = document.createElement('a');
+        link.download = `gantt-chart-${new Date().toISOString().slice(0,10)}.png`;
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+    } catch (err) {
+        alert('Image export failed — maybe try zooming out a bit?');
+        console.error(err);
+    } finally {
+        chart.classList.remove('exporting');
+        chart.style.overflow = 'auto';
     }
+}
 
-    function exportData() {
-        const dataStr = JSON.stringify(tasks, null, 2);
-        const blob = new Blob([dataStr], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `gantt-backup-${new Date().toISOString().split('T')[0]}.json`;
-        a.click();
-        URL.revokeObjectURL(url);
-    }
+function exportData() {
+    const dataStr = JSON.stringify(tasks, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `gantt-backup-${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+}
 
-    function importData(event) {
-        const file = event.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            try {
-                const imported = JSON.parse(e.target.result);
-                if (confirm('Replace all tasks with this file?')) {
-                    tasks = imported;
-                    saveTasksToFile();
-                    renderChart();
-                }
-            } catch (err) {
-                alert('Invalid JSON file');
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const imported = JSON.parse(e.target.result);
+            if (confirm('Replace all tasks with this file?')) {
+                tasks = imported;
+                saveTasksToFile();
+                renderChart();
             }
-        };
-        reader.readAsText(file);
-        event.target.value = '';
-    }
+        } catch (err) {
+            alert('Invalid JSON file');
+        }
+    };
+    reader.readAsText(file);
+    event.target.value = '';
+}
 
-    loadTasks();
+loadTasks();
 </script>
 </body>
 </html>
