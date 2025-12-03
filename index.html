@@ -264,6 +264,35 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+            position: relative;
+        }
+
+        .drag-handle {
+            position: absolute;
+            left: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: grab;
+            padding: 4px;
+            color: #9ca3af;
+            font-size: 16px;
+            user-select: none;
+        }
+
+        .drag-handle:active {
+            cursor: grabbing;
+        }
+
+        .task-info .task-name {
+            padding-left: 24px;
+        }
+
+        .task-row.dragging {
+            opacity: 0.5;
+        }
+
+        .task-row.drag-over {
+            border-top: 3px solid #3b82f6;
         }
 
         .task-name {
@@ -811,8 +840,9 @@
             const startOffset = Math.ceil((startDate - minDate) / 86400000);
             const duration = Math.ceil((endDate - startDate) / 86400000) + 1;
 
-            html += '<div class="task-row">';
+            html += `<div class="task-row" draggable="true" data-task-id="${task.id}" data-task-index="${taskIndex}">`;
             html += '<div class="task-info">';
+            html += `<div class="drag-handle" title="Drag to reorder">⋮⋮</div>`;
             html += `<div class="task-name">${priorityEmoji[task.priority] || ''} ${task.name}</div>`;
             html += `<div class="task-dates">${formatDate(task.startDate)} → ${task.isOngoing ? 'Ongoing' : formatDate(task.endDate || '')}</div>`;
             
@@ -845,7 +875,61 @@
             html += '</div></div></div></div>';
         });
 
-        container.innerHTML = html;  
+        container.innerHTML = html;
+        
+        // Add drag and drop event listeners
+        addDragAndDropListeners();
+    }
+
+    function addDragAndDropListeners() {
+        const taskRows = document.querySelectorAll('.task-row');
+        let draggedElement = null;
+        let draggedIndex = null;
+
+        taskRows.forEach((row) => {
+            row.addEventListener('dragstart', function(e) {
+                draggedElement = this;
+                draggedIndex = parseInt(this.dataset.taskIndex);
+                this.classList.add('dragging');
+                e.dataTransfer.effectAllowed = 'move';
+            });
+
+            row.addEventListener('dragend', function(e) {
+                this.classList.remove('dragging');
+                taskRows.forEach(r => r.classList.remove('drag-over'));
+            });
+
+            row.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                e.dataTransfer.dropEffect = 'move';
+                
+                if (draggedElement !== this) {
+                    this.classList.add('drag-over');
+                }
+            });
+
+            row.addEventListener('dragleave', function(e) {
+                this.classList.remove('drag-over');
+            });
+
+            row.addEventListener('drop', function(e) {
+                e.preventDefault();
+                this.classList.remove('drag-over');
+                
+                if (draggedElement !== this) {
+                    const dropIndex = parseInt(this.dataset.taskIndex);
+                    
+                    // Reorder the tasks array
+                    const draggedTask = tasks[draggedIndex];
+                    tasks.splice(draggedIndex, 1);
+                    tasks.splice(dropIndex, 0, draggedTask);
+                    
+                    // Save and re-render
+                    saveTasksToFile();
+                    renderChart();
+                }
+            });
+        });
     }
 
     function formatDate(dateStr) {
