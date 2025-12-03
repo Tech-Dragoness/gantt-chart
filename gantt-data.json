@@ -301,5 +301,20 @@
     "priority": "low",
     "dependencies": [],
     "createdAt": "2025-12-03T16:16:39.901Z"
+  },
+  {
+    "id": "1764778710846",
+    "name": "Checking For Same Bug As SQLite",
+    "description": "Check if NoSQL databases have issues of saving in the same folder like sql databases had issues with.",
+    "startDate": "2025-11-21",
+    "endDate": "2025-11-21",
+    "isOngoing": false,
+    "color": "#a13089",
+    "progress": 100,
+    "priority": "low",
+    "dependencies": [
+      "1764778471205"
+    ],
+    "createdAt": "2025-12-03T16:18:30.846Z"
   }
 ]
