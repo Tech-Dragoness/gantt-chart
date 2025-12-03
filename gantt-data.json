@@ -184,5 +184,18 @@
     "priority": "high",
     "dependencies": [],
     "createdAt": "2025-12-03T15:50:36.896Z"
+  },
+  {
+    "id": "1764777109084",
+    "name": "Adding PL/SQL Support",
+    "description": "Added tabs for plsql on PostgreSQL that supports it",
+    "startDate": "2025-11-26",
+    "endDate": "2025-11-28",
+    "isOngoing": false,
+    "color": "#a42323",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-03T15:51:49.084Z"
   }
 ]
