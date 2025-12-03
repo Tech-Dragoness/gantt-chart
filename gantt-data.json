@@ -138,7 +138,7 @@
     "name": "Adding Global Query Tab",
     "description": "Fix Query tab on sidebar to work in individual databases and allow creation of databases as well.",
     "startDate": "2025-11-25",
-    "endDate": "2025-12-26",
+    "endDate": "2025-11-26",
     "isOngoing": false,
     "color": "#9422c9",
     "progress": 100,
