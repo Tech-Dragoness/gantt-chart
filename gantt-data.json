@@ -212,141 +212,141 @@
     "startDate": "2025-11-28"
   },
   {
-    "id": "1764777982384",
-    "name": "Adding Support For Charts for Tables/Collections",
-    "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
-    "startDate": "2025-12-01",
-    "endDate": "2025-12-02",
-    "isOngoing": false,
     "color": "#e396e8",
-    "progress": 100,
-    "priority": "low",
+    "createdAt": "2025-12-03T16:06:22.384Z",
     "dependencies": [],
-    "createdAt": "2025-12-03T16:06:22.384Z"
+    "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
+    "endDate": "2025-12-02",
+    "id": "1764777982384",
+    "isOngoing": false,
+    "name": "Adding Support For Charts for Tables/Collections",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-12-01"
   },
   {
-    "id": "1764778068183",
-    "name": "Adding Procedure Support For Supported Databases",
-    "description": "Added procedure tab and support for procedure in mysql",
-    "startDate": "2025-11-29",
-    "endDate": "2025-11-30",
-    "isOngoing": false,
     "color": "#ec4b4b",
-    "progress": 100,
-    "priority": "critical",
+    "createdAt": "2025-12-03T16:07:48.183Z",
     "dependencies": [],
-    "createdAt": "2025-12-03T16:07:48.183Z"
-  },
-  {
-    "id": "1764778224368",
-    "name": "Add User Rights Tab",
-    "description": "Add user rights tab",
-    "startDate": "2025-11-29",
-    "endDate": "2025-12-01",
-    "isOngoing": false,
-    "color": "#1bc55c",
-    "progress": 100,
-    "priority": "critical",
-    "dependencies": [],
-    "createdAt": "2025-12-03T16:10:24.368Z"
-  },
-  {
-    "id": "1764778309329",
-    "name": "Convert Frontend To React",
-    "description": "Converted the entire HTML frontend to React, change backend to support the new format",
-    "startDate": "2025-11-29",
-    "endDate": "",
-    "isOngoing": true,
-    "color": "#351178",
-    "progress": 50,
-    "priority": "high",
-    "dependencies": [],
-    "createdAt": "2025-12-03T16:11:49.329Z"
-  },
-  {
-    "id": "1764778366059",
-    "name": "Perform Regression Testing",
-    "description": "Performed rigorous regression testing at all steps, at the end of every requirement completion.",
-    "startDate": "2025-11-15",
-    "endDate": "",
-    "isOngoing": true,
-    "color": "#ec2222",
-    "progress": 70,
-    "priority": "medium",
-    "dependencies": [],
-    "createdAt": "2025-12-03T16:12:46.059Z"
-  },
-  {
-    "id": "1764778471205",
-    "name": "Fix Bug In SQLite",
-    "description": "Fixed issue of sql databases creating databases in the same folder (Causing unrelated dbs to show up in SQLite list of dbs)",
-    "startDate": "2025-11-20",
-    "endDate": "2025-11-20",
-    "isOngoing": false,
-    "color": "#cc3dd6",
-    "progress": 100,
-    "priority": "high",
-    "dependencies": [],
-    "createdAt": "2025-12-03T16:14:31.205Z"
-  },
-  {
-    "id": "1764778599901",
-    "name": "Fix Documents Number Bug",
-    "description": "Fix the issue of 0 documents showing in collection_list",
-    "startDate": "2025-11-29",
+    "description": "Added procedure tab and support for procedure in mysql",
     "endDate": "2025-11-30",
+    "id": "1764778068183",
     "isOngoing": false,
-    "color": "#483bf7",
+    "name": "Adding Procedure Support For Supported Databases",
+    "priority": "critical",
     "progress": 100,
-    "priority": "low",
+    "startDate": "2025-11-29"
+  },
+  {
+    "color": "#1bc55c",
+    "createdAt": "2025-12-03T16:10:24.368Z",
+    "dependencies": [],
+    "description": "Add user rights tab",
+    "endDate": "2025-12-01",
+    "id": "1764778224368",
+    "isOngoing": false,
+    "name": "Add User Rights Tab",
+    "priority": "critical",
+    "progress": 100,
+    "startDate": "2025-11-29"
+  },
+  {
+    "color": "#351178",
+    "createdAt": "2025-12-03T16:11:49.329Z",
+    "dependencies": [],
+    "description": "Converted the entire HTML frontend to React, change backend to support the new format",
+    "endDate": "",
+    "id": "1764778309329",
+    "isOngoing": true,
+    "name": "Convert Frontend To React",
+    "priority": "high",
+    "progress": 50,
+    "startDate": "2025-11-29"
+  },
+  {
+    "color": "#ec2222",
+    "createdAt": "2025-12-03T16:12:46.059Z",
+    "dependencies": [],
+    "description": "Performed rigorous regression testing at all steps, at the end of every requirement completion.",
+    "endDate": "",
+    "id": "1764778366059",
+    "isOngoing": true,
+    "name": "Perform Regression Testing",
+    "priority": "medium",
+    "progress": 70,
+    "startDate": "2025-11-15"
+  },
+  {
+    "color": "#cc3dd6",
+    "createdAt": "2025-12-03T16:14:31.205Z",
+    "dependencies": [],
+    "description": "Fixed issue of sql databases creating databases in the same folder (Causing unrelated dbs to show up in SQLite list of dbs)",
+    "endDate": "2025-11-20",
+    "id": "1764778471205",
+    "isOngoing": false,
+    "name": "Fix Bug In SQLite",
+    "priority": "high",
+    "progress": 100,
+    "startDate": "2025-11-20"
+  },
+  {
+    "color": "#483bf7",
+    "createdAt": "2025-12-03T16:16:39.901Z",
     "dependencies": [
       "1764776388660"
     ],
-    "createdAt": "2025-12-03T16:16:39.901Z"
+    "description": "Fix the issue of 0 documents showing in collection_list",
+    "endDate": "2025-11-30",
+    "id": "1764778599901",
+    "isOngoing": false,
+    "name": "Fix Documents Number Bug",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-11-29"
   },
   {
-    "id": "1764778710846",
-    "name": "Checking For Same Bug As SQLite",
-    "description": "Check if NoSQL databases have issues of saving in the same folder like sql databases had issues with.",
-    "startDate": "2025-11-21",
-    "endDate": "2025-11-21",
+    "color": "#3bd8f7",
+    "createdAt": "2025-12-03T16:20:07.977Z",
+    "dependencies": [
+      "1764776388660"
+    ],
+    "description": "Fix the issue of modify and delete button on documents not working in MongoDB.",
+    "endDate": "2025-11-30",
+    "id": "1764778807977",
     "isOngoing": false,
-    "color": "#a13089",
+    "name": "Fix Modify And Delete Buttons Bug",
+    "priority": "medium",
     "progress": 100,
-    "priority": "low",
+    "startDate": "2025-11-29"
+  },
+  {
+    "color": "#a13089",
+    "createdAt": "2025-12-03T16:18:30.846Z",
     "dependencies": [
       "1764778471205"
     ],
-    "createdAt": "2025-12-03T16:18:30.846Z"
-  },
-  {
-    "id": "1764778807977",
-    "name": "Fix Modify And Delete Buttons Bug",
-    "description": "Fix the issue of modify and delete button on documents not working in MongoDB.",
-    "startDate": "2025-11-29",
-    "endDate": "2025-11-30",
+    "description": "Check if NoSQL databases have issues of saving in the same folder like sql databases had issues with.",
+    "endDate": "2025-11-21",
+    "id": "1764778710846",
     "isOngoing": false,
-    "color": "#3bd8f7",
+    "name": "Checking For Same Bug As SQLite",
+    "priority": "low",
     "progress": 100,
-    "priority": "medium",
-    "dependencies": [
-      "1764776388660"
-    ],
-    "createdAt": "2025-12-03T16:20:07.977Z"
+    "startDate": "2025-11-21"
   },
   {
-    "id": "1764779017906",
-    "name": "Fix Empty Collection Bug",
-    "description": "Fix the issue of database getting deleted when it's created and user immediately goes back to list of databases without creating a collection in MongoDB.",
-    "startDate": "2025-11-27",
-    "endDate": "2025-11-28",
-    "isOngoing": false,
     "color": "#3bf761",
-    "progress": 100,
-    "priority": "medium",
+    "createdAt": "2025-12-03T16:23:37.906Z",
     "dependencies": [
       "1764776388660"
     ],
-    "createdAt": "2025-12-03T16:23:37.906Z"
+    "description": "Fix the issue of database getting deleted when it's created and user immediately goes back to list of databases without creating a collection in MongoDB.",
+    "endDate": "2025-11-28",
+    "id": "1764779017906",
+    "isOngoing": false,
+    "name": "Fix Empty Collection Bug",
+    "priority": "medium",
+    "progress": 100,
+    "startDate": "2025-11-27"
   }
 ]
