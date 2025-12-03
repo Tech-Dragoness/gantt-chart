@@ -454,6 +454,19 @@
     "createdAt": "2025-12-03T16:52:05.196Z"
   },
   {
+    "id": "1764781278052",
+    "name": "Adding Charts",
+    "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
+    "startDate": "2025-11-30",
+    "endDate": "2025-11-30",
+    "isOngoing": false,
+    "color": "#903bf7",
+    "progress": 100,
+    "priority": "low",
+    "dependencies": [],
+    "createdAt": "2025-12-03T17:01:18.052Z"
+  },
+  {
     "id": "1764780967191",
     "name": "Implemented Search For Records/Collections",
     "description": "Added ability to search for specific information in records/documents in each page along with filtering",
@@ -478,19 +491,6 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:53:09.850Z"
-  },
-  {
-    "id": "1764781278052",
-    "name": "Adding Charts",
-    "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
-    "startDate": "2025-11-30",
-    "endDate": "2025-11-30",
-    "isOngoing": false,
-    "color": "#903bf7",
-    "progress": 100,
-    "priority": "low",
-    "dependencies": [],
-    "createdAt": "2025-12-03T17:01:18.052Z"
   },
   {
     "id": "1764781030293",
