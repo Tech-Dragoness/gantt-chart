@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1764771947186",
+    "name": "Create initial UI",
+    "description": "Created UI and styling similar to phpMyAdmin, the gui format inspiration for this project.",
+    "startDate": "2025-11-12",
+    "endDate": "2025-12-13",
+    "isOngoing": false,
+    "color": "#3b82f6",
+    "progress": 100,
+    "assignee": "",
+    "priority": "high",
+    "dependencies": [],
+    "createdAt": "2025-12-03T14:25:47.186Z"
+  }
+]
