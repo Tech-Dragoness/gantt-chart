@@ -42,18 +42,31 @@
     "startDate": "2025-11-13"
   },
   {
-    "id": "1764775314173",
-    "name": "Solidifying Logic Of SQL and NoSQL",
-    "description": "Added logic in both handlers to use db_handler and give work to the required handler to handle database-specific requests.",
-    "startDate": "2025-11-14",
-    "endDate": "2025-11-15",
-    "isOngoing": false,
     "color": "#3b82f6",
-    "progress": 100,
-    "priority": "critical",
+    "createdAt": "2025-12-03T15:21:54.173Z",
     "dependencies": [
       "1764774866931"
     ],
-    "createdAt": "2025-12-03T15:21:54.173Z"
+    "description": "Added logic in both handlers to use db_handler and give work to the required handler to handle database-specific requests.",
+    "endDate": "2025-11-15",
+    "id": "1764775314173",
+    "isOngoing": false,
+    "name": "Solidifying Logic Of SQL and NoSQL",
+    "priority": "critical",
+    "progress": 100,
+    "startDate": "2025-11-14"
+  },
+  {
+    "id": "1764775708362",
+    "name": "Adding GUI For Tables/Collections",
+    "description": "Added logic to have the programmer use gui to perform CRUD operations on SQL and NoSQL databases and also run queries (Both within tables and outside tables, but not yet outside databases in the sense can't create new databases, can only work within a database i.e work only within SQLLite's database DB1 at a time).",
+    "startDate": "2025-11-17",
+    "endDate": "2025-11-19",
+    "isOngoing": false,
+    "color": "#3b82f6",
+    "progress": 0,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-03T15:28:28.362Z"
   }
 ]
