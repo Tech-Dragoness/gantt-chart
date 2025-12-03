@@ -376,19 +376,6 @@
     "startDate": "2025-11-29"
   },
   {
-    "color": "#351178",
-    "createdAt": "2025-12-03T16:11:49.329Z",
-    "dependencies": [],
-    "description": "Converted the entire HTML frontend to React, change backend to support the new format",
-    "endDate": "",
-    "id": "1764778309329",
-    "isOngoing": true,
-    "name": "Convert Frontend To React",
-    "priority": "high",
-    "progress": 50,
-    "startDate": "2025-11-29"
-  },
-  {
     "id": "1764780496271",
     "name": "Add Search Bar",
     "description": "Add search bar to search db names and table names",
@@ -426,5 +413,18 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:50:45.990Z"
+  },
+  {
+    "color": "#351178",
+    "createdAt": "2025-12-03T16:11:49.329Z",
+    "dependencies": [],
+    "description": "Converted the entire HTML frontend to React, change backend to support the new format",
+    "endDate": "",
+    "id": "1764778309329",
+    "isOngoing": true,
+    "name": "Convert Frontend To React",
+    "priority": "high",
+    "progress": 50,
+    "startDate": "2025-11-29"
   }
 ]
