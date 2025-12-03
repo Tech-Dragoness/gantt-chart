@@ -249,5 +249,18 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:10:24.368Z"
+  },
+  {
+    "id": "1764778309329",
+    "name": "Convert Frontend To React",
+    "description": "Converted the entire HTML frontend to React, change backend to support the new format",
+    "startDate": "2025-11-29",
+    "endDate": "",
+    "isOngoing": true,
+    "color": "#351178",
+    "progress": 50,
+    "priority": "high",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:11:49.329Z"
   }
 ]
