@@ -232,7 +232,7 @@
     "endDate": "2025-11-30",
     "isOngoing": false,
     "color": "#ec4b4b",
-    "progress": 0,
+    "progress": 100,
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:07:48.183Z"
