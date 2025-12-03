@@ -294,6 +294,21 @@
     "startDate": "2025-11-29"
   },
   {
+    "color": "#3bd8f7",
+    "createdAt": "2025-12-03T16:20:07.977Z",
+    "dependencies": [
+      "1764776388660"
+    ],
+    "description": "Fix the issue of modify and delete button on documents not working in MongoDB.",
+    "endDate": "2025-11-30",
+    "id": "1764778807977",
+    "isOngoing": false,
+    "name": "Fix Modify And Delete Buttons Bug",
+    "priority": "medium",
+    "progress": 100,
+    "startDate": "2025-11-29"
+  },
+  {
     "color": "#1bc55c",
     "createdAt": "2025-12-03T16:10:24.368Z",
     "dependencies": [],
@@ -344,21 +359,6 @@
     "isOngoing": false,
     "name": "Fix Documents Number Bug",
     "priority": "low",
-    "progress": 100,
-    "startDate": "2025-11-29"
-  },
-  {
-    "color": "#3bd8f7",
-    "createdAt": "2025-12-03T16:20:07.977Z",
-    "dependencies": [
-      "1764776388660"
-    ],
-    "description": "Fix the issue of modify and delete button on documents not working in MongoDB.",
-    "endDate": "2025-11-30",
-    "id": "1764778807977",
-    "isOngoing": false,
-    "name": "Fix Modify And Delete Buttons Bug",
-    "priority": "medium",
     "progress": 100,
     "startDate": "2025-11-29"
   },
