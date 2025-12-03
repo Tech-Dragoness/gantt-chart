@@ -124,7 +124,7 @@
     "isOngoing": false,
     "color": "#f79f3b",
     "progress": 100,
-    "priority": "medium",
+    "priority": "high",
     "dependencies": [
       "1764774596257",
       "1764774866931",
