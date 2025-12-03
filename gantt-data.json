@@ -14,31 +14,46 @@
     "startDate": "2025-11-12"
   },
   {
-    "id": "1764774596257",
-    "name": "Add Context Switching Between Databases",
-    "description": "Added SQL and NoSQL databases differentiation and context switching between them.",
-    "startDate": "2025-11-12",
-    "endDate": "2025-11-13",
-    "isOngoing": false,
-    "color": "#f43bf7",
-    "progress": 100,
     "assignee": "",
-    "priority": "critical",
+    "color": "#f43bf7",
+    "createdAt": "2025-12-03T15:09:56.257Z",
     "dependencies": [],
-    "createdAt": "2025-12-03T15:09:56.257Z"
+    "description": "Added SQL and NoSQL databases differentiation and context switching between them.",
+    "endDate": "2025-11-13",
+    "id": "1764774596257",
+    "isOngoing": false,
+    "name": "Add Context Switching Between Databases",
+    "priority": "critical",
+    "progress": 100,
+    "startDate": "2025-11-12"
   },
   {
-    "id": "1764774866931",
-    "name": "Separating Logic Of SQL and NoSQL",
-    "description": "Separated logic for SQL and NoSQL into sql_handler and nosql_handler, app.py for main work and differentiating to the two handlers. Ongoing task, as newly added functionalities needs to keep getting separated this way.",
-    "startDate": "2025-11-13",
-    "endDate": "",
-    "isOngoing": true,
-    "color": "#c53bf7",
-    "progress": 100,
     "assignee": "",
-    "priority": "critical",
+    "color": "#c53bf7",
+    "createdAt": "2025-12-03T15:14:26.931Z",
     "dependencies": [],
-    "createdAt": "2025-12-03T15:14:26.931Z"
+    "description": "Separated logic for SQL and NoSQL into sql_handler and nosql_handler, app.py for main work and differentiating to the two handlers. Ongoing task, as newly added functionalities needs to keep getting separated this way.",
+    "endDate": "",
+    "id": "1764774866931",
+    "isOngoing": true,
+    "name": "Separating Logic Of SQL and NoSQL",
+    "priority": "critical",
+    "progress": 100,
+    "startDate": "2025-11-13"
+  },
+  {
+    "id": "1764775314173",
+    "name": "Solidifying Logic Of SQL and NoSQL",
+    "description": "Added logic in both handlers to use db_handler and give work to the required handler to handle database-specific requests.",
+    "startDate": "2025-11-14",
+    "endDate": "2025-11-15",
+    "isOngoing": false,
+    "color": "#3b82f6",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [
+      "1764774866931"
+    ],
+    "createdAt": "2025-12-03T15:21:54.173Z"
   }
 ]
