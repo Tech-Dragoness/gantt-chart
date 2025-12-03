@@ -587,6 +587,7 @@
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
     
     <script>
     // 🔥 CHANGE THIS TO YOUR RENDER URL
@@ -949,33 +950,225 @@
     }
 
     async function downloadAsImage() {
-        const chart = document.querySelector('.chart-container');
-        chart.classList.add('exporting');
-        chart.style.overflow = 'visible';
+    const chart = document.querySelector('.chart-container');
+    
+    // Check if chart is very long
+    const taskCount = tasks.length;
+    const isLongChart = taskCount > 15;
+    
+    if (isLongChart) {
+        const userChoice = confirm(
+            `You have ${taskCount} tasks. This will be split into multiple images.\n\n` +
+            `Click OK to export as ZIP file with multiple images (recommended)\n` +
+            `Click Cancel to export as single large image`
+        );
         
-        try {
-            const canvas = await html2canvas(chart, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                logging: false,
-                useCORS: true,
-                allowTaint: true,
-                width: chart.scrollWidth,
-height: chart.scrollHeight,
-scrollX: 0,
-scrollY: 0
-});
+        if (userChoice) {
+            // Export as multiple images in a ZIP
+            await downloadAsMultipleImages();
+            return;
+        }
+    }
+    
+    chart.classList.add('exporting');
+    chart.style.overflow = 'visible';
+    
+    try {
+        const scale = isLongChart ? 3 : 2;
+        
+        const canvas = await html2canvas(chart, {
+            scale: scale,
+            backgroundColor: '#ffffff',
+            logging: false,
+            useCORS: true,
+            allowTaint: true,
+            width: chart.scrollWidth,
+            height: chart.scrollHeight,
+            scrollX: 0,
+            scrollY: 0
+        });
+        
         const link = document.createElement('a');
         link.download = `gantt-chart-${new Date().toISOString().slice(0,10)}.png`;
         link.href = canvas.toDataURL('image/png');
         link.click();
+        
+        if (isLongChart) {
+            alert('Large image exported! The file may be several MB in size.');
+        }
     } catch (err) {
-        alert('Image export failed — maybe try zooming out a bit?');
+        alert('Image export failed — try the multi-image ZIP option instead');
         console.error(err);
     } finally {
         chart.classList.remove('exporting');
         chart.style.overflow = 'auto';
     }
+}
+
+async function downloadAsMultipleImages() {
+    const chart = document.querySelector('.chart-container');
+    const chartContent = document.getElementById('ganttChart');
+    const taskRows = document.querySelectorAll('.task-row');
+    
+    if (taskRows.length === 0) {
+        alert('No tasks to export!');
+        return;
+    }
+    
+    chart.classList.add('exporting');
+    
+    // Show progress
+    const originalHTML = chartContent.innerHTML;
+    chartContent.innerHTML = '<div class="loading">Generating images... Please wait...</div>';
+    
+    try {
+        const zip = new JSZip();
+        const tasksPerImage = 10; // Number of tasks per image
+        const totalImages = Math.ceil(tasks.length / tasksPerImage);
+        
+        // Temporarily restore content for processing
+        chartContent.innerHTML = originalHTML;
+        
+        for (let i = 0; i < totalImages; i++) {
+            const startIdx = i * tasksPerImage;
+            const endIdx = Math.min((i + 1) * tasksPerImage, tasks.length);
+            const tasksSubset = tasks.slice(startIdx, endIdx);
+            
+            // Create a temporary container with just these tasks
+            const tempContainer = document.createElement('div');
+            tempContainer.className = 'chart-container';
+            tempContainer.style.position = 'absolute';
+            tempContainer.style.left = '-9999px';
+            tempContainer.style.top = '0';
+            tempContainer.style.width = chart.offsetWidth + 'px';
+            tempContainer.style.background = 'white';
+            tempContainer.style.padding = '30px';
+            
+            // Build the HTML for this subset
+            let html = '<div class="chart-header">';
+            html += `<h2>Project Timeline (Part ${i + 1} of ${totalImages})</h2>`;
+            html += '</div>';
+            html += buildGanttHTML(tasksSubset);
+            
+            tempContainer.innerHTML = html;
+            document.body.appendChild(tempContainer);
+            
+            // Capture this section
+            const canvas = await html2canvas(tempContainer, {
+                scale: 2,
+                backgroundColor: '#ffffff',
+                logging: false,
+                useCORS: true,
+                allowTaint: true
+            });
+            
+            // Convert to blob and add to zip
+            const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+            zip.file(`gantt-chart-part-${i + 1}-of-${totalImages}.png`, blob);
+            
+            // Clean up
+            document.body.removeChild(tempContainer);
+            
+            // Update progress
+            chartContent.innerHTML = `<div class="loading">Generating images... ${i + 1} of ${totalImages} complete</div>`;
+        }
+        
+        // Generate and download the zip
+        chartContent.innerHTML = '<div class="loading">Creating ZIP file...</div>';
+        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(zipBlob);
+        link.download = `gantt-chart-${new Date().toISOString().slice(0,10)}.zip`;
+        link.click();
+        
+        alert(`Successfully exported ${totalImages} images in a ZIP file!`);
+        
+    } catch (err) {
+        alert('Multi-image export failed: ' + err.message);
+        console.error(err);
+    } finally {
+        // Restore original content
+        chartContent.innerHTML = originalHTML;
+        chart.classList.remove('exporting');
+        addDragAndDropListeners();
+    }
+}
+
+function buildGanttHTML(tasksSubset) {
+    if (tasksSubset.length === 0) return '<div class="empty-state">No tasks</div>';
+    
+    const allDates = tasksSubset.flatMap(t => {
+        const dates = [new Date(t.startDate)];
+        if (!t.isOngoing && t.endDate) dates.push(new Date(t.endDate));
+        return dates;
+    });
+    const minDate = new Date(Math.min(...allDates));
+    const maxDate = tasksSubset.some(t => t.isOngoing) ? new Date() : new Date(Math.max(...allDates));
+    
+    minDate.setDate(minDate.getDate() - 7);
+    maxDate.setDate(maxDate.getDate() + 14);
+    const dayWidth = 30;
+
+    const months = [];
+    let current = new Date(minDate);
+    current.setDate(1);
+    while (current <= maxDate) {
+        const monthStart = new Date(current);
+        const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
+        const visibleEnd = monthEnd > maxDate ? maxDate : monthEnd;
+        const days = Math.ceil((visibleEnd - Math.max(monthStart, minDate)) / 86400000) + 1;
+
+        months.push({
+            name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
+            days
+        });
+        current.setMonth(current.getMonth() + 1);
+    }
+
+    let html = '<div class="timeline-header">';
+    html += '<div class="task-labels"><strong>Tasks</strong></div>';
+    html += '<div class="timeline-grid">';
+    html += '<div class="month-headers">';
+    months.forEach(m => {
+        html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
+    });
+    html += '</div></div></div>';
+
+    const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
+
+    tasksSubset.forEach((task) => {
+        const startDate = new Date(task.startDate);
+        const endDate = task.isOngoing ? new Date() : new Date(task.endDate || task.startDate);
+        const startOffset = Math.ceil((startDate - minDate) / 86400000);
+        const duration = Math.ceil((endDate - startDate) / 86400000) + 1;
+        const dateBasedWidth = duration * dayWidth;
+
+        html += '<div class="task-row">';
+        html += '<div class="task-info">';
+        html += `<div class="task-name">${priorityEmoji[task.priority] || ''} ${task.name}</div>`;
+        html += `<div class="task-dates">${formatDate(task.startDate)} → ${task.isOngoing ? 'Ongoing' : formatDate(task.endDate || '')}</div>`;
+        
+        if (task.dependencies && task.dependencies.length > 0) {
+            html += '<div>';
+            task.dependencies.forEach(depId => {
+                const depTask = tasks.find(t => t.id === depId);
+                if (depTask) {
+                    html += `<span class="task-badge">⚡ ${depTask.name}</span> `;
+                }
+            });
+            html += '</div>';
+        }
+        
+        html += '</div>';
+        html += '<div class="task-timeline">';
+        html += `<div class="task-bar ${task.isOngoing ? 'ongoing' : ''}" 
+                 style="left:${startOffset * dayWidth}px; width:${dateBasedWidth}px; background:${task.color};">`;
+        html += `<div class="progress-bar" style="width:${task.progress}%"></div>`;
+        html += `<span>${task.progress}%</span>`;
+        html += '</div></div></div>';
+    });
+
+    return html;
 }
 
 function exportData() {
