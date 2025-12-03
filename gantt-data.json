@@ -288,5 +288,18 @@
     "priority": "high",
     "dependencies": [],
     "createdAt": "2025-12-03T16:14:31.205Z"
+  },
+  {
+    "id": "1764778599901",
+    "name": "Fix Documents Number Bug",
+    "description": "Fix the issue of 0 documents showing in collection_list",
+    "startDate": "2025-11-29",
+    "endDate": "2025-11-30",
+    "isOngoing": false,
+    "color": "#483bf7",
+    "progress": 100,
+    "priority": "low",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:16:39.901Z"
   }
 ]
