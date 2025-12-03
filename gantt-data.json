@@ -48,7 +48,7 @@
     "createdAt": "2025-12-03T15:21:54.173Z",
     "dependencies": [],
     "description": "Added logic in both handlers to use db_handler and give work to the required handler to handle database-specific requests.",
-    "endDate": "2025-11-15",
+    "endDate": "2025-11-16",
     "id": "1764775314173",
     "isOngoing": false,
     "name": "Solidifying Logic Of SQL and NoSQL",
