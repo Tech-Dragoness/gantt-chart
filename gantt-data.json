@@ -66,5 +66,18 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T15:28:28.362Z"
+  },
+  {
+    "id": "1764775869465",
+    "name": "Adding Support For Structure Changes",
+    "description": "Added logic to allow alteration of table structure, records and documents via GUI (Shows number of records, collections, tables and documents and they update whenever insertion/creation/deletion are performed).",
+    "startDate": "2025-12-18",
+    "endDate": "2025-12-20",
+    "isOngoing": false,
+    "color": "#3bf76a",
+    "progress": 100,
+    "priority": "medium",
+    "dependencies": [],
+    "createdAt": "2025-12-03T15:31:09.465Z"
   }
 ]
