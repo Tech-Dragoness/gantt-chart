@@ -434,7 +434,7 @@
     "startDate": "2025-11-30",
     "endDate": "2025-11-30",
     "isOngoing": false,
-    "color": "#5a0707",
+    "color": "#660000",
     "progress": 100,
     "priority": "critical",
     "dependencies": [],
