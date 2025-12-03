@@ -107,7 +107,7 @@
       "1764775708362"
     ],
     "description": "Added two SQL databases (SQLLite and DuckDB) and tested for clashes and context switched, fixed issues and clashes.",
-    "endDate": "2025-11-28",
+    "endDate": "2025-11-30",
     "id": "1764776299278",
     "isOngoing": false,
     "name": "Adding Test SQL DBs",
