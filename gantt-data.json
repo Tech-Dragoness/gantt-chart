@@ -72,7 +72,9 @@
   {
     "color": "#3bf76a",
     "createdAt": "2025-12-03T15:31:09.465Z",
-    "dependencies": [],
+    "dependencies": [
+      "1764775708362"
+    ],
     "description": "Added logic to allow alteration of table structure, records and documents via GUI (Shows number of records, collections, tables and documents and they update whenever insertion/creation/deletion are performed).",
     "endDate": "2025-11-20",
     "id": "1764775869465",
