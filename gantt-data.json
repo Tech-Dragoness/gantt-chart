@@ -320,21 +320,6 @@
     "startDate": "2025-11-21"
   },
   {
-    "color": "#3bf761",
-    "createdAt": "2025-12-03T16:23:37.906Z",
-    "dependencies": [
-      "1764776388660"
-    ],
-    "description": "Fix the issue of database getting deleted when it's created and user immediately goes back to list of databases without creating a collection in MongoDB.",
-    "endDate": "2025-11-28",
-    "id": "1764779017906",
-    "isOngoing": false,
-    "name": "Fix Empty Collection Bug",
-    "priority": "medium",
-    "progress": 100,
-    "startDate": "2025-11-27"
-  },
-  {
     "color": "#3bd8f7",
     "createdAt": "2025-12-03T16:20:07.977Z",
     "dependencies": [
@@ -348,5 +333,20 @@
     "priority": "medium",
     "progress": 100,
     "startDate": "2025-11-29"
+  },
+  {
+    "color": "#3bf761",
+    "createdAt": "2025-12-03T16:23:37.906Z",
+    "dependencies": [
+      "1764776388660"
+    ],
+    "description": "Fix the issue of database getting deleted when it's created and user immediately goes back to list of databases without creating a collection in MongoDB.",
+    "endDate": "2025-11-28",
+    "id": "1764779017906",
+    "isOngoing": false,
+    "name": "Fix Empty Collection Bug",
+    "priority": "medium",
+    "progress": 100,
+    "startDate": "2025-11-27"
   }
 ]
