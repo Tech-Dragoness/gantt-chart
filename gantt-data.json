@@ -327,7 +327,9 @@
     "color": "#3bd8f7",
     "progress": 100,
     "priority": "medium",
-    "dependencies": [],
+    "dependencies": [
+      "1764776388660"
+    ],
     "createdAt": "2025-12-03T16:20:07.977Z"
   },
   {
