@@ -187,7 +187,7 @@
   },
   {
     "id": "1764777109084",
-    "name": "Adding PL/SQL Support",
+    "name": "Adding PL/SQL Support For Supported Databases",
     "description": "Added tabs for plsql on PostgreSQL that supports it",
     "startDate": "2025-11-26",
     "endDate": "2025-11-28",
