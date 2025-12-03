@@ -833,16 +833,12 @@
             
             // Calculate the date-based width
             const dateBasedWidth = duration * dayWidth;
-            
-            // Create a temporary element to measure text width
-            const textContent = `${task.name} (${task.progress}%)`;
-            const minWidth = Math.max(dateBasedWidth, textContent.length * 7 + 40); // Approximate text width
-            
+                        
             html += `<div class="task-bar ${task.isOngoing ? 'ongoing' : ''}" 
-                     style="left:${startOffset * dayWidth}px; width:${minWidth}px; background:${task.color};" 
+                     style="left:${startOffset * dayWidth}px; width:${dateBasedWidth}px; background:${task.color};" 
                      onclick="openModal('${task.id}')">`;
-            html += `<div class="progress-bar" style="width:${(task.progress / 100) * (dateBasedWidth / minWidth) * 100}%"></div>`;
-            html += `<span>${textContent}</span>`;
+            html += `<div class="progress-bar" style="width:${task.progress}%"></div>`;
+            html += `<span>${task.progress}%</span>`;
             html += '<div class="task-actions">';
             html += `<button class="btn btn-icon btn-sm" onclick="event.stopPropagation(); openModal('${task.id}')">✏️</button>`;
             html += `<button class="btn btn-icon btn-sm" onclick="event.stopPropagation(); deleteTask('${task.id}')">❌</button>`;
