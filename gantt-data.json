@@ -172,7 +172,7 @@
     "name": "Checking For Same Bug As SQLite",
     "priority": "low",
     "progress": 100,
-    "startDate": "2025-10-29"
+    "startDate": "2025-11-29"
   },
   {
     "color": "#9422c9",
@@ -266,6 +266,21 @@
     "startDate": "2025-12-01"
   },
   {
+    "color": "#3bf761",
+    "createdAt": "2025-12-03T16:23:37.906Z",
+    "dependencies": [
+      "1764776388660"
+    ],
+    "description": "Fix the issue of database getting deleted when it's created and user immediately goes back to list of databases without creating a collection in MongoDB.",
+    "endDate": "2025-11-28",
+    "id": "1764779017906",
+    "isOngoing": false,
+    "name": "Fix Empty Collection Bug",
+    "priority": "medium",
+    "progress": 100,
+    "startDate": "2025-11-27"
+  },
+  {
     "color": "#ec4b4b",
     "createdAt": "2025-12-03T16:07:48.183Z",
     "dependencies": [],
@@ -331,21 +346,6 @@
     "priority": "low",
     "progress": 100,
     "startDate": "2025-11-29"
-  },
-  {
-    "color": "#3bf761",
-    "createdAt": "2025-12-03T16:23:37.906Z",
-    "dependencies": [
-      "1764776388660"
-    ],
-    "description": "Fix the issue of database getting deleted when it's created and user immediately goes back to list of databases without creating a collection in MongoDB.",
-    "endDate": "2025-11-28",
-    "id": "1764779017906",
-    "isOngoing": false,
-    "name": "Fix Empty Collection Bug",
-    "priority": "medium",
-    "progress": 100,
-    "startDate": "2025-11-27"
   },
   {
     "color": "#3bd8f7",
