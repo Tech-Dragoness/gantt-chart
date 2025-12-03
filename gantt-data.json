@@ -96,5 +96,23 @@
     "priority": "high",
     "progress": 100,
     "startDate": "2025-11-24"
+  },
+  {
+    "id": "1764776299278",
+    "name": "Adding Test SQL DBs",
+    "description": "Added two SQL databases (SQLLite and DuckDB) and tested for clashes and context switched, fixed issues and clashes.",
+    "startDate": "2025-11-26",
+    "endDate": "2025-11-28",
+    "isOngoing": false,
+    "color": "#f7b23b",
+    "progress": 100,
+    "priority": "high",
+    "dependencies": [
+      "1764774596257",
+      "1764774866931",
+      "1764775314173",
+      "1764775708362"
+    ],
+    "createdAt": "2025-12-03T15:38:19.278Z"
   }
 ]
