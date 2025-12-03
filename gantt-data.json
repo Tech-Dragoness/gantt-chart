@@ -400,5 +400,18 @@
     "priority": "low",
     "dependencies": [],
     "createdAt": "2025-12-03T16:48:16.271Z"
+  },
+  {
+    "id": "1764780589522",
+    "name": "Adding Credential Page",
+    "description": "Added a credential entry page for DBs like MySQL and PostgreSQL that needs credentials to connect and uses keyring to store these credentials for further access",
+    "startDate": "2025-11-28",
+    "endDate": "2025-11-28",
+    "isOngoing": false,
+    "color": "#51f73b",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:49:49.522Z"
   }
 ]
