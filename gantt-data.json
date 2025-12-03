@@ -114,5 +114,23 @@
       "1764775708362"
     ],
     "createdAt": "2025-12-03T15:38:19.278Z"
+  },
+  {
+    "id": "1764776388660",
+    "name": "Adding Test NoSQL DBs",
+    "description": "Added two NoSQL databases (MongoDB andd TinyDB) and tested if context switching is correctly executed and there are no clashes.",
+    "startDate": "2025-11-26",
+    "endDate": "2025-11-28",
+    "isOngoing": false,
+    "color": "#f79f3b",
+    "progress": 100,
+    "priority": "medium",
+    "dependencies": [
+      "1764774596257",
+      "1764774866931",
+      "1764775314173",
+      "1764775708362"
+    ],
+    "createdAt": "2025-12-03T15:39:48.660Z"
   }
 ]
