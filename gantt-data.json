@@ -387,5 +387,18 @@
     "priority": "high",
     "progress": 50,
     "startDate": "2025-11-29"
+  },
+  {
+    "id": "1764780496271",
+    "name": "Add Search Bar",
+    "description": "Add search bar to search db names and table names",
+    "startDate": "2025-11-28",
+    "endDate": "2025-11-29",
+    "isOngoing": false,
+    "color": "#663da4",
+    "progress": 100,
+    "priority": "low",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:48:16.271Z"
   }
 ]
