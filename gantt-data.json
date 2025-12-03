@@ -57,19 +57,6 @@
     "startDate": "2025-11-14"
   },
   {
-    "color": "#57729e",
-    "createdAt": "2025-12-03T15:28:28.362Z",
-    "dependencies": [],
-    "description": "Added logic to have the programmer use gui to perform CRUD operations on SQL and NoSQL databases and also run queries (Both within tables and outside tables, but not yet outside databases in the sense can't create new databases, can only work within a database i.e work only within SQLLite's database DB1 at a time).",
-    "endDate": "2025-11-19",
-    "id": "1764775708362",
-    "isOngoing": false,
-    "name": "Adding GUI For Tables/Collections",
-    "priority": "critical",
-    "progress": 100,
-    "startDate": "2025-11-17"
-  },
-  {
     "id": "1764779740794",
     "name": "Fix Handler Name On Sidebar",
     "description": "Fix the handler name shown on the sidebar that shows no handler everywhere except on the home page.",
@@ -81,6 +68,19 @@
     "priority": "low",
     "dependencies": [],
     "createdAt": "2025-12-03T16:35:40.794Z"
+  },
+  {
+    "color": "#57729e",
+    "createdAt": "2025-12-03T15:28:28.362Z",
+    "dependencies": [],
+    "description": "Added logic to have the programmer use gui to perform CRUD operations on SQL and NoSQL databases and also run queries (Both within tables and outside tables, but not yet outside databases in the sense can't create new databases, can only work within a database i.e work only within SQLLite's database DB1 at a time).",
+    "endDate": "2025-11-19",
+    "id": "1764775708362",
+    "isOngoing": false,
+    "name": "Adding GUI For Tables/Collections",
+    "priority": "critical",
+    "progress": 100,
+    "startDate": "2025-11-17"
   },
   {
     "color": "#3bf76a",
