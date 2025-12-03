@@ -418,26 +418,6 @@
             font-size: 14px;
         }
 
-        .dependency-line {
-            position: absolute;
-            height: 2px;
-            background: #6b7280;
-            transform-origin: left center;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .dependency-arrow {
-            position: absolute;
-            width: 0;
-            height: 0;
-            border-left: 6px solid #6b7280;
-            border-top: 4px solid transparent;
-            border-bottom: 4px solid transparent;
-            right: -6px;
-            top: -3px;
-        }
-
         .task-badge {
             display: inline-flex;
             align-items: center;
@@ -850,31 +830,6 @@
             
             html += '</div>';
             html += '<div class="task-timeline">';
-            
-            // Draw dependency lines
-            if (task.dependencies && task.dependencies.length > 0) {
-                task.dependencies.forEach(depId => {
-                    const depTask = tasks.find(t => t.id === depId);
-                    if (depTask) {
-                        const depIndex = tasks.findIndex(t => t.id === depId);
-                        const depEndDate = depTask.isOngoing ? new Date() : new Date(depTask.endDate || depTask.startDate);
-                        const depEndOffset = Math.ceil((depEndDate - minDate) / 86400000);
-                        const depDuration = Math.ceil((depEndDate - new Date(depTask.startDate)) / 86400000) + 1;
-                        
-                        // Calculate line positions
-                        const fromX = depEndOffset * dayWidth + depDuration * dayWidth;
-                        const toX = startOffset * dayWidth;
-                        const fromY = (depIndex - taskIndex) * 60 + 15; // Relative Y position
-                        
-                        if (fromX < toX) {
-                            const length = toX - fromX;
-                            html += `<div class="dependency-line" style="left:${fromX}px; width:${length}px; top:${fromY}px;">`;
-                            html += '<div class="dependency-arrow"></div>';
-                            html += '</div>';
-                        }
-                    }
-                });
-            }
             
             // Calculate the date-based width
             const dateBasedWidth = duration * dayWidth;
