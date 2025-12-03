@@ -354,7 +354,7 @@
     "name": "Fix Handler Name On Sidebar",
     "description": "Fix the handler name shown on the sidebar that shows no handler everywhere except on the home page.",
     "startDate": "2025-11-17",
-    "endDate": "2025-12-17",
+    "endDate": "2025-11-17",
     "isOngoing": false,
     "color": "#315896",
     "progress": 100,
