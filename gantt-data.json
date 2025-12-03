@@ -63,7 +63,7 @@
     "startDate": "2025-11-17",
     "endDate": "2025-11-19",
     "isOngoing": false,
-    "color": "#3b82f6",
+    "color": "#57729e",
     "progress": 100,
     "priority": "critical",
     "dependencies": [],
