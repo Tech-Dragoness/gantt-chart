@@ -316,5 +316,18 @@
       "1764778471205"
     ],
     "createdAt": "2025-12-03T16:18:30.846Z"
+  },
+  {
+    "id": "1764778807977",
+    "name": "Fix Modify And Delete Buttons Bug",
+    "description": "Fix the issue of modify and delete button on documents not working in MongoDB.",
+    "startDate": "2025-10-29",
+    "endDate": "2025-11-30",
+    "isOngoing": false,
+    "color": "#3bd8f7",
+    "progress": 100,
+    "priority": "medium",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:20:07.977Z"
   }
 ]
