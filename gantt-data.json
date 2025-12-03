@@ -428,6 +428,19 @@
     "createdAt": "2025-12-03T16:50:45.990Z"
   },
   {
+    "id": "1764780850087",
+    "name": "Added Filtering",
+    "description": "Added filtering ability by columns",
+    "startDate": "2025-11-30",
+    "endDate": "2025-11-30",
+    "isOngoing": false,
+    "color": "#f7d83b",
+    "progress": 100,
+    "priority": "low",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:54:10.087Z"
+  },
+  {
     "id": "1764780725196",
     "name": "Providing Connection Links",
     "description": "Checked how to access the databases created in code. Provided connection links for each db along with instructions and test code.",
@@ -452,18 +465,5 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:53:09.850Z"
-  },
-  {
-    "id": "1764780850087",
-    "name": "Added Filtering",
-    "description": "Added filtering ability by columns",
-    "startDate": "2025-11-30",
-    "endDate": "2025-11-30",
-    "isOngoing": false,
-    "color": "#f7d83b",
-    "progress": 100,
-    "priority": "low",
-    "dependencies": [],
-    "createdAt": "2025-12-03T16:54:10.087Z"
   }
 ]
