@@ -275,5 +275,18 @@
     "priority": "medium",
     "dependencies": [],
     "createdAt": "2025-12-03T16:12:46.059Z"
+  },
+  {
+    "id": "1764778471205",
+    "name": "Fix Bug In SQLite",
+    "description": "Fixed issue of sql databases creating databases in the same folder (Causing unrelated dbs to show up in SQLite list of dbs)",
+    "startDate": "2025-11-20",
+    "endDate": "2025-12-20",
+    "isOngoing": false,
+    "color": "#cc3dd6",
+    "progress": 100,
+    "priority": "high",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:14:31.205Z"
   }
 ]
