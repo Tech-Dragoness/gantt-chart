@@ -186,6 +186,19 @@
     "startDate": "2025-11-25"
   },
   {
+    "id": "1764780266691",
+    "name": "Ensuring True Capitalization Of DB Names",
+    "description": "Made all SQL dbs show their db names and table names in their true capitalization (Except Duckdb which apparently has Windows's influence on it that causes dbs to be stored in lowercase but can be accessed with the capitalized form as well since it's case-insensitive and MySQL which in Windows by default stores in lowercase)",
+    "startDate": "2025-11-27",
+    "endDate": "2025-11-27",
+    "isOngoing": false,
+    "color": "#3bf748",
+    "progress": 100,
+    "priority": "low",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:44:26.691Z"
+  },
+  {
     "color": "#3bf761",
     "createdAt": "2025-12-03T16:23:37.906Z",
     "dependencies": [
@@ -199,19 +212,6 @@
     "priority": "medium",
     "progress": 100,
     "startDate": "2025-11-27"
-  },
-  {
-    "id": "1764780266691",
-    "name": "Ensuring True Capitalization Of DB Names",
-    "description": "Made all SQL dbs show their db names and table names in their true capitalization (Except Duckdb which apparently has Windows's influence on it that causes dbs to be stored in lowercase but can be accessed with the capitalized form as well since it's case-insensitive and MySQL which in Windows by default stores in lowercase)",
-    "startDate": "2025-11-27",
-    "endDate": "2025-11-27",
-    "isOngoing": false,
-    "color": "#3bf748",
-    "progress": 100,
-    "priority": "low",
-    "dependencies": [],
-    "createdAt": "2025-12-03T16:44:26.691Z"
   },
   {
     "color": "#a13089",
@@ -298,6 +298,19 @@
     "startDate": "2025-11-26"
   },
   {
+    "color": "#f56161",
+    "createdAt": "2025-12-03T16:12:46.059Z",
+    "dependencies": [],
+    "description": "Performed rigorous regression testing at all steps, at the end of every requirement completion.",
+    "endDate": "",
+    "id": "1764778366059",
+    "isOngoing": true,
+    "name": "Perform Regression Testing",
+    "priority": "medium",
+    "progress": 70,
+    "startDate": "2025-11-15"
+  },
+  {
     "color": "#6224d6",
     "createdAt": "2025-12-03T16:01:10.510Z",
     "dependencies": [],
@@ -374,18 +387,5 @@
     "priority": "high",
     "progress": 50,
     "startDate": "2025-11-29"
-  },
-  {
-    "color": "#f56161",
-    "createdAt": "2025-12-03T16:12:46.059Z",
-    "dependencies": [],
-    "description": "Performed rigorous regression testing at all steps, at the end of every requirement completion.",
-    "endDate": "",
-    "id": "1764778366059",
-    "isOngoing": true,
-    "name": "Perform Regression Testing",
-    "priority": "medium",
-    "progress": 70,
-    "startDate": "2025-11-15"
   }
 ]
