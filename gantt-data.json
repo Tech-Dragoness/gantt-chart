@@ -236,5 +236,18 @@
     "priority": "critical",
     "dependencies": [],
     "createdAt": "2025-12-03T16:07:48.183Z"
+  },
+  {
+    "id": "1764778224368",
+    "name": "Add User Rights Tab",
+    "description": "Add user rights tab",
+    "startDate": "2025-11-29",
+    "endDate": "2025-12-01",
+    "isOngoing": false,
+    "color": "#1bc55c",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-03T16:10:24.368Z"
   }
 ]
