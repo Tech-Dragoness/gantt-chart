@@ -171,5 +171,18 @@
     "priority": "low",
     "dependencies": [],
     "createdAt": "2025-12-03T15:49:15.252Z"
+  },
+  {
+    "id": "1764777036896",
+    "name": "Fixing MySQL Credentials Bug",
+    "description": "Fixed a bug in regards to MySQL where credentials kept failing (Strongly suspect issue with personal xammp, therefore installed MySQL separately and testing on it, all issues seem to be resolved))",
+    "startDate": "2025-11-29",
+    "endDate": "2025-11-30",
+    "isOngoing": false,
+    "color": "#7967bc",
+    "progress": 100,
+    "priority": "high",
+    "dependencies": [],
+    "createdAt": "2025-12-03T15:50:36.896Z"
   }
 ]
