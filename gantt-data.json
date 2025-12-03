@@ -281,7 +281,7 @@
     "name": "Fix Bug In SQLite",
     "description": "Fixed issue of sql databases creating databases in the same folder (Causing unrelated dbs to show up in SQLite list of dbs)",
     "startDate": "2025-11-20",
-    "endDate": "2025-12-20",
+    "endDate": "2025-11-20",
     "isOngoing": false,
     "color": "#cc3dd6",
     "progress": 100,
