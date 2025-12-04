@@ -825,41 +825,68 @@
             return;
         }
 
-        const allDates = tasks.flatMap(t => {
-            const dates = [new Date(t.startDate)];
-            if (!t.isOngoing && t.endDate) dates.push(new Date(t.endDate));
-            return dates;
-        });
-        const minDate = new Date(Math.min(...allDates));
-        const maxDate = tasks.some(t => t.isOngoing) ? new Date() : new Date(Math.max(...allDates));
+        // FIXED: Calculate date range from ALL tasks
+const allDates = [];
+tasks.forEach(t => {
+    allDates.push(new Date(t.startDate));
+    if (!t.isOngoing && t.endDate) {
+        allDates.push(new Date(t.endDate));
+    }
+    if (t.isOngoing) {
+        allDates.push(new Date()); // Include today for ongoing tasks
+    }
+});
+
+console.log('🔍 All task dates:', allDates.map(d => d.toISOString()));
+
+const minDate = new Date(Math.min(...allDates));
+const maxDate = new Date(Math.max(...allDates));
+
+console.log('📅 Original date range:', {
+    min: minDate.toISOString(),
+    max: maxDate.toISOString()
+});
+
+// Add padding
+minDate.setDate(minDate.getDate() - 7);
+maxDate.setDate(maxDate.getDate() + 14);
+
+console.log('📅 Date range with padding:', {
+    min: minDate.toISOString(),
+    max: maxDate.toISOString(),
+    totalDays: Math.ceil((maxDate - minDate) / 86400000)
+});
        
         minDate.setDate(minDate.getDate() - 7);
         maxDate.setDate(maxDate.getDate() + 14);
         const dayWidth = 30;
 
-        // Build months array - generate ALL months between minDate and maxDate
-        const months = [];
-        let current = new Date(minDate);
-        current.setHours(0, 0, 0, 0);
+        // FIXED: Build months array - generate ALL months between minDate and maxDate
+// FIXED: Build months array - start from beginning of first month
+const months = [];
+let current = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
+current.setHours(0, 0, 0, 0);
 
-        while (current <= maxDate) {
-            const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
-            monthEnd.setHours(23, 59, 59, 999);
-            
-            const rangeStart = current;
-            const rangeEnd = monthEnd < maxDate ? monthEnd : maxDate;
-            const daysInMonth = Math.floor((rangeEnd - rangeStart) / 86400000) + 1;
-            
-            if (daysInMonth > 0) {
-                months.push({
-                    name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
-                    days: daysInMonth
-                });
-            }
-            
-            current = new Date(current.getFullYear(), current.getMonth() + 1, 1);
-            current.setHours(0, 0, 0, 0);
-        }
+while (current <= maxDate) {
+    const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
+    monthEnd.setHours(23, 59, 59, 999);
+    
+    const rangeStart = current < minDate ? minDate : current;
+    const rangeEnd = monthEnd > maxDate ? maxDate : monthEnd;
+    const daysInMonth = Math.floor((rangeEnd - rangeStart) / 86400000) + 1;
+    
+    if (daysInMonth > 0) {
+        months.push({
+            name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
+            days: daysInMonth
+        });
+    }
+    
+    current = new Date(current.getFullYear(), current.getMonth() + 1, 1);
+    current.setHours(0, 0, 0, 0);
+}
+
+console.log('📊 Generated months:', months);
 
         // Calculate total timeline width
         const totalDays = Math.ceil((maxDate - minDate) / 86400000) + 1;
@@ -1090,15 +1117,19 @@ async function downloadAsMultipleImages() {
             const endIdx = Math.min((i + 1) * tasksPerImage, tasks.length);
             const tasksSubset = tasks.slice(startIdx, endIdx);
             
-            // Create a temporary container with just these tasks
-            const tempContainer = document.createElement('div');
-            tempContainer.className = 'chart-container';
-            tempContainer.style.position = 'absolute';
-            tempContainer.style.left = '-9999px';
-            tempContainer.style.top = '0';
-            tempContainer.style.width = chart.offsetWidth + 'px';
-            tempContainer.style.background = 'white';
-            tempContainer.style.padding = '30px';
+            // FIXED: Create a temporary container with full width
+const tempContainer = document.createElement('div');
+tempContainer.className = 'chart-container';
+tempContainer.style.position = 'absolute';
+tempContainer.style.left = '-9999px';
+tempContainer.style.top = '0';
+tempContainer.style.width = 'auto'; // CHANGED: Allow full width
+tempContainer.style.minWidth = '1400px'; // ADDED: Ensure minimum width
+tempContainer.style.background = 'white';
+tempContainer.style.padding = '30px';
+tempContainer.style.overflow = 'visible'; // ADDED: Show full content
+
+console.log(`🖼️ Creating image ${i + 1} of ${totalImages} for tasks ${startIdx} to ${endIdx}`);
             
             // Build the HTML for this subset
             let html = '<div class="chart-header">';
@@ -1110,13 +1141,28 @@ async function downloadAsMultipleImages() {
             document.body.appendChild(tempContainer);
             
             // Capture this section
-            const canvas = await html2canvas(tempContainer, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                logging: false,
-                useCORS: true,
-                allowTaint: true
-            });
+            // FIXED: Capture this section with full width
+const ganttElement = tempContainer.querySelector('#ganttChart') || tempContainer;
+const fullWidth = ganttElement.scrollWidth + 60;
+const fullHeight = tempContainer.scrollHeight;
+
+console.log(`📏 Capture dimensions: ${fullWidth}x${fullHeight}px`);
+
+const canvas = await html2canvas(tempContainer, {
+    scale: 2,
+    backgroundColor: '#ffffff',
+    logging: false,
+    useCORS: true,
+    allowTaint: true,
+    width: fullWidth, // ADDED: Capture full width
+    height: fullHeight, // ADDED: Capture full height
+    scrollX: 0, // ADDED
+    scrollY: 0, // ADDED
+    windowWidth: fullWidth, // ADDED
+    windowHeight: fullHeight // ADDED
+});
+
+console.log(`✅ Canvas created: ${canvas.width}x${canvas.height}px`);
             
             // Convert to blob and add to zip
             const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
@@ -1155,16 +1201,30 @@ function buildGanttHTML(tasksSubset) {
     
     // CRITICAL: Use the SAME date range calculation as the main chart
     // This ensures consistent spacing across all exported images
-    const allDates = tasks.flatMap(t => {  // Use 'tasks', not 'tasksSubset'!
-        const dates = [new Date(t.startDate)];
-        if (!t.isOngoing && t.endDate) dates.push(new Date(t.endDate));
-        return dates;
-    });
-    const minDate = new Date(Math.min(...allDates));
-    const maxDate = tasks.some(t => t.isOngoing) ? new Date() : new Date(Math.max(...allDates));
-    
-    minDate.setDate(minDate.getDate() - 7);
-    maxDate.setDate(maxDate.getDate() + 14);
+    // FIXED: Use the SAME date range calculation as the main chart
+const allDates = [];
+tasks.forEach(t => {  // Use 'tasks', not 'tasksSubset'!
+    allDates.push(new Date(t.startDate));
+    if (!t.isOngoing && t.endDate) {
+        allDates.push(new Date(t.endDate));
+    }
+    if (t.isOngoing) {
+        allDates.push(new Date());
+    }
+});
+
+console.log('🖼️ Export date range - all dates:', allDates.map(d => d.toISOString().split('T')[0]));
+
+const minDate = new Date(Math.min(...allDates));
+const maxDate = new Date(Math.max(...allDates));
+
+minDate.setDate(minDate.getDate() - 7);
+maxDate.setDate(maxDate.getDate() + 14);
+
+console.log('🖼️ Export date range:', {
+    min: minDate.toISOString().split('T')[0],
+    max: maxDate.toISOString().split('T')[0]
+});
     const dayWidth = 30;
 
     // Build months array - generate ALL months between minDate and maxDate
