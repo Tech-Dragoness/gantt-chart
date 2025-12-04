@@ -847,7 +847,12 @@
         // Add day headers
         html += '<div class="day-headers">';
         let dayCounter = new Date(minDate);
-        while (dayCounter <= maxDate) {
+        // Normalize to start of day to avoid timezone issues
+        dayCounter.setHours(0, 0, 0, 0);
+        const maxDateNormalized = new Date(maxDate);
+        maxDateNormalized.setHours(0, 0, 0, 0);
+
+        while (dayCounter <= maxDateNormalized) {
             html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
             dayCounter.setDate(dayCounter.getDate() + 1);
         }
@@ -860,7 +865,7 @@
         tasks.forEach((task, taskIndex) => {
             const startDate = new Date(task.startDate);
             const endDate = task.isOngoing ? new Date() : new Date(task.endDate || task.startDate);
-            const startOffset = Math.ceil((startDate - minDate) / 86400000);
+            const startOffset = Math.floor((startDate - minDate) / 86400000);
             const duration = Math.ceil((endDate - startDate) / 86400000) + 1;
 
             html += `<div class="task-row" draggable="true" data-task-id="${task.id}" data-task-index="${taskIndex}">`;
@@ -1151,7 +1156,12 @@ function buildGanttHTML(tasksSubset) {
     // Add day headers
     html += '<div class="day-headers">';
     let dayCounter = new Date(minDate);
-    while (dayCounter <= maxDate) {
+    // Normalize to start of day to avoid timezone issues
+    dayCounter.setHours(0, 0, 0, 0);
+    const maxDateNormalized = new Date(maxDate);
+    maxDateNormalized.setHours(0, 0, 0, 0);
+
+    while (dayCounter <= maxDateNormalized) {
         html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
         dayCounter.setDate(dayCounter.getDate() + 1);
     }
@@ -1164,7 +1174,7 @@ function buildGanttHTML(tasksSubset) {
     tasksSubset.forEach((task) => {
         const startDate = new Date(task.startDate);
         const endDate = task.isOngoing ? new Date() : new Date(task.endDate || task.startDate);
-        const startOffset = Math.ceil((startDate - minDate) / 86400000);
+        const startOffset = Math.floor((startDate - minDate) / 86400000);
         const duration = Math.ceil((endDate - startDate) / 86400000) + 1;
         const dateBasedWidth = duration * dayWidth;
 
