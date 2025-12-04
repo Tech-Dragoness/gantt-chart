@@ -354,13 +354,13 @@
       "1764778471205"
     ],
     "description": "Check if NoSQL databases have issues of saving in the same folder like sql databases had issues with.",
-    "endDate": "2025-11-29",
+    "endDate": "2025-11-27",
     "id": "1764778710846",
     "isOngoing": false,
     "name": "Checking For Same Bug As SQLite",
     "priority": "low",
     "progress": 100,
-    "startDate": "2025-11-29"
+    "startDate": "2025-11-27"
   },
   {
     "color": "#37ff00",
