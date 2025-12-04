@@ -828,37 +828,29 @@
         maxDate.setDate(maxDate.getDate() + 14);
         const dayWidth = 30;
 
-        // Calculate total days in the timeline
-const totalDays = Math.ceil((maxDate - minDate) / 86400000) + 1;
+        // Build months array - generate ALL months between minDate and maxDate
+        const months = [];
+        let current = new Date(minDate);
+        current.setHours(0, 0, 0, 0);
 
-// Build months array based on actual visible date range
-const months = [];
-let current = new Date(minDate);
-current.setHours(0, 0, 0, 0);
-
-// Start from the first day we're actually showing (minDate), not the 1st of the month
-let daysProcessed = 0;
-while (daysProcessed < totalDays) {
-    const monthStart = new Date(current);
-    const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
-    monthEnd.setHours(23, 59, 59, 999);
-    
-    // Calculate how many days of this month are visible
-    const visibleStart = current;
-    const visibleEnd = monthEnd > maxDate ? maxDate : monthEnd;
-    const daysInMonth = Math.ceil((visibleEnd - visibleStart) / 86400000) + 1;
-    
-    months.push({
-        name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
-        days: daysInMonth
-    });
-    
-    daysProcessed += daysInMonth;
-    
-    // Move to first day of next month
-    current = new Date(current.getFullYear(), current.getMonth() + 1, 1);
-    current.setHours(0, 0, 0, 0);
-}
+        while (current <= maxDate) {
+            const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
+            monthEnd.setHours(23, 59, 59, 999);
+            
+            const rangeStart = current;
+            const rangeEnd = monthEnd < maxDate ? monthEnd : maxDate;
+            const daysInMonth = Math.floor((rangeEnd - rangeStart) / 86400000) + 1;
+            
+            if (daysInMonth > 0) {
+                months.push({
+                    name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
+                    days: daysInMonth
+                });
+            }
+            
+            current = new Date(current.getFullYear(), current.getMonth() + 1, 1);
+            current.setHours(0, 0, 0, 0);
+        }
 
         let html = '<div class="timeline-header">';
         html += '<div class="task-labels"><strong>Tasks</strong></div>';
@@ -1012,10 +1004,18 @@ html += '</div>';  // Close timeline-header
     }
     
     chart.classList.add('exporting');
+    
+    // Temporarily remove overflow to capture full width
+    const originalOverflow = chart.style.overflow;
     chart.style.overflow = 'visible';
     
+    // Force the container to show its full content width
+    const ganttChart = document.getElementById('ganttChart');
+    const fullWidth = ganttChart.scrollWidth + 60; // +60 for padding
+    const fullHeight = chart.scrollHeight;
+    
     try {
-        const scale = isLongChart ? 3 : 2;
+        const scale = isLongChart ? 2 : 2;
         
         const canvas = await html2canvas(chart, {
             scale: scale,
@@ -1023,10 +1023,12 @@ html += '</div>';  // Close timeline-header
             logging: false,
             useCORS: true,
             allowTaint: true,
-            width: chart.scrollWidth,
-            height: chart.scrollHeight,
+            width: fullWidth,
+            height: fullHeight,
             scrollX: 0,
-            scrollY: 0
+            scrollY: 0,
+            windowWidth: fullWidth,
+            windowHeight: fullHeight
         });
         
         const link = document.createElement('a');
@@ -1042,7 +1044,7 @@ html += '</div>';  // Close timeline-header
         console.error(err);
     } finally {
         chart.classList.remove('exporting');
-        chart.style.overflow = 'auto';
+        chart.style.overflow = originalOverflow;
     }
 }
 
@@ -1152,37 +1154,29 @@ function buildGanttHTML(tasksSubset) {
     maxDate.setDate(maxDate.getDate() + 14);
     const dayWidth = 30;
 
-    // Calculate total days in the timeline
-const totalDays = Math.ceil((maxDate - minDate) / 86400000) + 1;
-
-// Build months array based on actual visible date range
-const months = [];
-let current = new Date(minDate);
-current.setHours(0, 0, 0, 0);
-
-// Start from the first day we're actually showing (minDate), not the 1st of the month
-let daysProcessed = 0;
-while (daysProcessed < totalDays) {
-    const monthStart = new Date(current);
-    const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
-    monthEnd.setHours(23, 59, 59, 999);
-    
-    // Calculate how many days of this month are visible
-    const visibleStart = current;
-    const visibleEnd = monthEnd > maxDate ? maxDate : monthEnd;
-    const daysInMonth = Math.ceil((visibleEnd - visibleStart) / 86400000) + 1;
-    
-    months.push({
-        name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
-        days: daysInMonth
-    });
-    
-    daysProcessed += daysInMonth;
-    
-    // Move to first day of next month
-    current = new Date(current.getFullYear(), current.getMonth() + 1, 1);
+    // Build months array - generate ALL months between minDate and maxDate
+    const months = [];
+    let current = new Date(minDate);
     current.setHours(0, 0, 0, 0);
-}
+
+    while (current <= maxDate) {
+        const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
+        monthEnd.setHours(23, 59, 59, 999);
+        
+        const rangeStart = current;
+        const rangeEnd = monthEnd < maxDate ? monthEnd : maxDate;
+        const daysInMonth = Math.floor((rangeEnd - rangeStart) / 86400000) + 1;
+        
+        if (daysInMonth > 0) {
+            months.push({
+                name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
+                days: daysInMonth
+            });
+        }
+        
+        current = new Date(current.getFullYear(), current.getMonth() + 1, 1);
+        current.setHours(0, 0, 0, 0);
+    }
 
     let html = '<div class="timeline-header">';
     html += '<div class="task-labels"><strong>Tasks</strong></div>';
