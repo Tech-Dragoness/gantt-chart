@@ -415,7 +415,7 @@
     "startDate": "2025-11-29"
   },
   {
-    "color": "#2d8aa9",
+    "color": "#1eff00",
     "createdAt": "2025-12-03T16:50:45.990Z",
     "dependencies": [],
     "description": "Checked and confirmed functionality of joins",
@@ -428,7 +428,7 @@
     "startDate": "2025-11-30"
   },
   {
-    "color": "#f7d83b",
+    "color": "#04ff00",
     "createdAt": "2025-12-03T16:54:10.087Z",
     "dependencies": [],
     "description": "Added filtering ability by columns",
