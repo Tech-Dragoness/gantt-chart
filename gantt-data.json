@@ -1,16 +1,16 @@
 [
   {
-    "id": "1764854700174",
-    "name": "Deciding The Topic",
-    "description": "Researching and deciding the topic, performing feasibility studies and requirement analysis.",
-    "startDate": "2025-11-10",
-    "endDate": "2025-11-12",
-    "isOngoing": false,
     "color": "#00ff2a",
-    "progress": 100,
-    "priority": "critical",
+    "createdAt": "2025-12-04T13:25:00.174Z",
     "dependencies": [],
-    "createdAt": "2025-12-04T13:25:00.174Z"
+    "description": "Researching and deciding the topic, performing feasibility studies and requirement analysis.",
+    "endDate": "2025-11-12",
+    "id": "1764854700174",
+    "isOngoing": false,
+    "name": "Deciding The Topic",
+    "priority": "critical",
+    "progress": 100,
+    "startDate": "2025-11-10"
   },
   {
     "assignee": "",
@@ -547,31 +547,44 @@
     "startDate": "2025-12-03"
   },
   {
-    "id": "1764854134299",
-    "name": "Adding ER Diagram Relationship Management",
-    "description": "Added option of managing relationships for er diagrams for making them more efficient and correct, and ensured that these relationships shall be recorded in the diagram statistics for the user to view",
-    "startDate": "2025-12-04",
-    "endDate": "2025-12-04",
-    "isOngoing": false,
     "color": "#51f73b",
-    "progress": 100,
-    "priority": "low",
+    "createdAt": "2025-12-04T13:15:34.299Z",
     "dependencies": [
       "1764781030293"
     ],
-    "createdAt": "2025-12-04T13:15:34.299Z"
+    "description": "Added option of managing relationships for er diagrams for making them more efficient and correct, and ensured that these relationships shall be recorded in the diagram statistics for the user to view",
+    "endDate": "2025-12-04",
+    "id": "1764854134299",
+    "isOngoing": false,
+    "name": "Adding ER Diagram Relationship Management",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-12-04"
   },
   {
-    "id": "1764854205696",
-    "name": "Modified Insert/Update/Delete Sections In SQL Table Details Page",
-    "description": "Changed the insert, update and delete sections in sql table details page to becomes buttons which when clicked opens a modal for data entry so that they take up less space in the page",
-    "startDate": "2025-12-04",
-    "endDate": "2025-12-04",
-    "isOngoing": false,
     "color": "#6df73b",
-    "progress": 100,
-    "priority": "low",
+    "createdAt": "2025-12-04T13:16:45.696Z",
     "dependencies": [],
-    "createdAt": "2025-12-04T13:16:45.696Z"
+    "description": "Changed the insert, update and delete sections in sql table details page to becomes buttons which when clicked opens a modal for data entry so that they take up less space in the page",
+    "endDate": "2025-12-04",
+    "id": "1764854205696",
+    "isOngoing": false,
+    "name": "Modified Insert/Update/Delete Sections In SQL Table Details Page",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-12-04"
+  },
+  {
+    "id": "1764858839178",
+    "name": "Trial",
+    "description": "Trial",
+    "startDate": "2025-12-04",
+    "endDate": "2026-02-26",
+    "isOngoing": false,
+    "color": "#3b82f6",
+    "progress": 0,
+    "priority": "medium",
+    "dependencies": [],
+    "createdAt": "2025-12-04T14:33:59.178Z"
   }
 ]
