@@ -1,7 +1,7 @@
 [
   {
     "assignee": "",
-    "color": "#3b82f6",
+    "color": "#00ff55",
     "createdAt": "2025-12-03T14:25:47.186Z",
     "dependencies": [],
     "description": "Created UI and styling similar to phpMyAdmin, the gui format inspiration for this project.",
