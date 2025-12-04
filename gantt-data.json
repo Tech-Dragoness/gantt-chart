@@ -296,21 +296,6 @@
     "startDate": "2025-11-29"
   },
   {
-    "color": "#00ff11",
-    "createdAt": "2025-12-03T16:16:39.901Z",
-    "dependencies": [
-      "1764776388660"
-    ],
-    "description": "Fix the issue of 0 documents showing in collection_list",
-    "endDate": "2025-11-30",
-    "id": "1764778599901",
-    "isOngoing": false,
-    "name": "Fix Documents Number Bug",
-    "priority": "low",
-    "progress": 100,
-    "startDate": "2025-11-29"
-  },
-  {
     "color": "#00ff40",
     "createdAt": "2025-12-03T16:01:10.510Z",
     "dependencies": [],
@@ -359,6 +344,21 @@
     "isOngoing": false,
     "name": "Fix Column Rename Issue",
     "priority": "high",
+    "progress": 100,
+    "startDate": "2025-11-29"
+  },
+  {
+    "color": "#00ff11",
+    "createdAt": "2025-12-03T16:16:39.901Z",
+    "dependencies": [
+      "1764776388660"
+    ],
+    "description": "Fix the issue of 0 documents showing in collection_list",
+    "endDate": "2025-11-30",
+    "id": "1764778599901",
+    "isOngoing": false,
+    "name": "Fix Documents Number Bug",
+    "priority": "low",
     "progress": 100,
     "startDate": "2025-11-29"
   },
