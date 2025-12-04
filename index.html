@@ -819,21 +819,37 @@
         maxDate.setDate(maxDate.getDate() + 14);
         const dayWidth = 30;
 
-        const months = [];
-        let current = new Date(minDate);
-        current.setDate(1);
-        while (current <= maxDate) {
-            const monthStart = new Date(current);
-            const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
-            const visibleEnd = monthEnd > maxDate ? maxDate : monthEnd;
-            const days = Math.ceil((visibleEnd - Math.max(monthStart, minDate)) / 86400000) + 1;
+        // Calculate total days in the timeline
+const totalDays = Math.ceil((maxDate - minDate) / 86400000) + 1;
 
-            months.push({
-                name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
-                days
-            });
-            current.setMonth(current.getMonth() + 1);
-        }
+// Build months array based on actual visible date range
+const months = [];
+let current = new Date(minDate);
+current.setHours(0, 0, 0, 0);
+
+// Start from the first day we're actually showing (minDate), not the 1st of the month
+let daysProcessed = 0;
+while (daysProcessed < totalDays) {
+    const monthStart = new Date(current);
+    const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
+    monthEnd.setHours(23, 59, 59, 999);
+    
+    // Calculate how many days of this month are visible
+    const visibleStart = current;
+    const visibleEnd = monthEnd > maxDate ? maxDate : monthEnd;
+    const daysInMonth = Math.ceil((visibleEnd - visibleStart) / 86400000) + 1;
+    
+    months.push({
+        name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
+        days: daysInMonth
+    });
+    
+    daysProcessed += daysInMonth;
+    
+    // Move to first day of next month
+    current = new Date(current.getFullYear(), current.getMonth() + 1, 1);
+    current.setHours(0, 0, 0, 0);
+}
 
         let html = '<div class="timeline-header">';
         html += '<div class="task-labels"><strong>Tasks</strong></div>';
@@ -1127,22 +1143,37 @@ function buildGanttHTML(tasksSubset) {
     maxDate.setDate(maxDate.getDate() + 14);
     const dayWidth = 30;
 
-    // Build months array - same as main chart
-    const months = [];
-    let current = new Date(minDate);
-    current.setDate(1);
-    while (current <= maxDate) {
-        const monthStart = new Date(current);
-        const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
-        const visibleEnd = monthEnd > maxDate ? maxDate : monthEnd;
-        const days = Math.ceil((visibleEnd - Math.max(monthStart, minDate)) / 86400000) + 1;
+    // Calculate total days in the timeline
+const totalDays = Math.ceil((maxDate - minDate) / 86400000) + 1;
 
-        months.push({
-            name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
-            days
-        });
-        current.setMonth(current.getMonth() + 1);
-    }
+// Build months array based on actual visible date range
+const months = [];
+let current = new Date(minDate);
+current.setHours(0, 0, 0, 0);
+
+// Start from the first day we're actually showing (minDate), not the 1st of the month
+let daysProcessed = 0;
+while (daysProcessed < totalDays) {
+    const monthStart = new Date(current);
+    const monthEnd = new Date(current.getFullYear(), current.getMonth() + 1, 0);
+    monthEnd.setHours(23, 59, 59, 999);
+    
+    // Calculate how many days of this month are visible
+    const visibleStart = current;
+    const visibleEnd = monthEnd > maxDate ? maxDate : monthEnd;
+    const daysInMonth = Math.ceil((visibleEnd - visibleStart) / 86400000) + 1;
+    
+    months.push({
+        name: current.toLocaleString('default', { month: 'short', year: 'numeric' }),
+        days: daysInMonth
+    });
+    
+    daysProcessed += daysInMonth;
+    
+    // Move to first day of next month
+    current = new Date(current.getFullYear(), current.getMonth() + 1, 1);
+    current.setHours(0, 0, 0, 0);
+}
 
     let html = '<div class="timeline-header">';
     html += '<div class="task-labels"><strong>Tasks</strong></div>';
@@ -1153,19 +1184,14 @@ function buildGanttHTML(tasksSubset) {
     });
     html += '</div>';
     
-    // Add day headers
-    html += '<div class="day-headers">';
-    let dayCounter = new Date(minDate);
-    // Normalize to start of day to avoid timezone issues
-    dayCounter.setHours(0, 0, 0, 0);
-    const maxDateNormalized = new Date(maxDate);
-    maxDateNormalized.setHours(0, 0, 0, 0);
-
-    while (dayCounter <= maxDateNormalized) {
-        html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
-        dayCounter.setDate(dayCounter.getDate() + 1);
-    }
-    html += '</div>';
+    // Add day headers - iterate through actual visible days
+html += '<div class="day-headers">';
+for (let i = 0; i < totalDays; i++) {
+    const currentDay = new Date(minDate);
+    currentDay.setDate(currentDay.getDate() + i);
+    html += `<div class="day-header" style="width:${dayWidth}px">${currentDay.getDate()}</div>`;
+}
+html += '</div>';
     
     html += '</div></div>';
 
