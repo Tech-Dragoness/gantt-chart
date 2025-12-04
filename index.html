@@ -230,12 +230,17 @@
         .timeline-grid {
             flex: 1;
             position: relative;
+            overflow: visible;
+            min-width: max-content;
         }
 
         .month-headers {
             display: flex;
             height: 40px;
             border-bottom: 1px solid #e5e7eb;
+            flex-wrap: nowrap;
+            width: fit-content;
+            min-width: 100%;
         }
 
         .month-header {
@@ -250,6 +255,9 @@
         .day-headers {
             display: flex;
             height: 30px;
+            flex-wrap: nowrap;
+            width: fit-content;
+            min-width: 100%;
         }
 
         .day-header {
@@ -331,6 +339,7 @@
             position: relative;
             padding: 15px 0;
             overflow: visible;
+            min-width: max-content;
         }
 
         .task-bar {
