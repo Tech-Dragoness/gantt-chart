@@ -860,19 +860,14 @@ while (daysProcessed < totalDays) {
         });
         html += '</div>';
 
-        // Add day headers
-        html += '<div class="day-headers">';
-        let dayCounter = new Date(minDate);
-        // Normalize to start of day to avoid timezone issues
-        dayCounter.setHours(0, 0, 0, 0);
-        const maxDateNormalized = new Date(maxDate);
-        maxDateNormalized.setHours(0, 0, 0, 0);
-
-        while (dayCounter <= maxDateNormalized) {
-            html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
-            dayCounter.setDate(dayCounter.getDate() + 1);
-        }
-        html += '</div>';
+        // Add day headers - iterate through actual visible days
+html += '<div class="day-headers">';
+for (let i = 0; i < totalDays; i++) {
+    const currentDay = new Date(minDate);
+    currentDay.setDate(currentDay.getDate() + i);
+    html += `<div class="day-header" style="width:${dayWidth}px">${currentDay.getDate()}</div>`;
+}
+html += '</div>';
 
         html += '</div></div>';
 
