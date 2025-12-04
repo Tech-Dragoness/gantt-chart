@@ -111,7 +111,7 @@
     "startDate": "2025-11-18"
   },
   {
-    "color": "#14bd4c",
+    "color": "#00ff55",
     "createdAt": "2025-12-03T15:33:52.507Z",
     "dependencies": [],
     "description": "Added db_registry for automatically detecting handlers for plug and play experience (Programmers just need to add a file with *_handler.py and it would automatically be detected and taken as new database type, is the programmer's responsibility to follow guidelines such as stating what type of database it is and it's name and add in all the abstract methods needed)",
