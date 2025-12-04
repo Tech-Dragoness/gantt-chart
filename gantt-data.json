@@ -137,42 +137,6 @@
     "startDate": "2025-11-24"
   },
   {
-    "color": "#04ff00",
-    "createdAt": "2025-12-03T15:38:19.278Z",
-    "dependencies": [
-      "1764774596257",
-      "1764774866931",
-      "1764775314173",
-      "1764775708362"
-    ],
-    "description": "Added two SQL databases (SQLLite and DuckDB) and tested for clashes and context switched, fixed issues and clashes.",
-    "endDate": "2025-11-30",
-    "id": "1764776299278",
-    "isOngoing": false,
-    "name": "Adding Test SQL DBs",
-    "priority": "high",
-    "progress": 100,
-    "startDate": "2025-11-26"
-  },
-  {
-    "color": "#59ff00",
-    "createdAt": "2025-12-03T15:39:48.660Z",
-    "dependencies": [
-      "1764774596257",
-      "1764774866931",
-      "1764775314173",
-      "1764775708362"
-    ],
-    "description": "Added two NoSQL databases (MongoDB andd TinyDB) and tested if context switching is correctly executed and there are no clashes.",
-    "endDate": "2025-11-30",
-    "id": "1764776388660",
-    "isOngoing": false,
-    "name": "Adding Test NoSQL DBs",
-    "priority": "high",
-    "progress": 100,
-    "startDate": "2025-11-26"
-  },
-  {
     "color": "#00ff11",
     "createdAt": "2025-12-03T15:46:50.788Z",
     "dependencies": [],
@@ -208,6 +172,42 @@
     "isOngoing": false,
     "name": "Adding PL/SQL Support For Supported Databases",
     "priority": "critical",
+    "progress": 100,
+    "startDate": "2025-11-26"
+  },
+  {
+    "color": "#04ff00",
+    "createdAt": "2025-12-03T15:38:19.278Z",
+    "dependencies": [
+      "1764774596257",
+      "1764774866931",
+      "1764775314173",
+      "1764775708362"
+    ],
+    "description": "Added two SQL databases (SQLLite and DuckDB) and tested for clashes and context switched, fixed issues and clashes.",
+    "endDate": "2025-11-30",
+    "id": "1764776299278",
+    "isOngoing": false,
+    "name": "Adding Test SQL DBs",
+    "priority": "high",
+    "progress": 100,
+    "startDate": "2025-11-26"
+  },
+  {
+    "color": "#59ff00",
+    "createdAt": "2025-12-03T15:39:48.660Z",
+    "dependencies": [
+      "1764774596257",
+      "1764774866931",
+      "1764775314173",
+      "1764775708362"
+    ],
+    "description": "Added two NoSQL databases (MongoDB andd TinyDB) and tested if context switching is correctly executed and there are no clashes.",
+    "endDate": "2025-11-30",
+    "id": "1764776388660",
+    "isOngoing": false,
+    "name": "Adding Test NoSQL DBs",
+    "priority": "high",
     "progress": 100,
     "startDate": "2025-11-26"
   },
@@ -281,21 +281,6 @@
     "startDate": "2025-11-29"
   },
   {
-    "color": "#11ff00",
-    "createdAt": "2025-12-03T16:18:30.846Z",
-    "dependencies": [
-      "1764778471205"
-    ],
-    "description": "Check if NoSQL databases have issues of saving in the same folder like sql databases had issues with.",
-    "endDate": "2025-11-29",
-    "id": "1764778710846",
-    "isOngoing": false,
-    "name": "Checking For Same Bug As SQLite",
-    "priority": "low",
-    "progress": 100,
-    "startDate": "2025-11-29"
-  },
-  {
     "color": "#00ff40",
     "createdAt": "2025-12-03T16:01:10.510Z",
     "dependencies": [],
@@ -358,6 +343,21 @@
     "id": "1764778599901",
     "isOngoing": false,
     "name": "Fix Documents Number Bug",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-11-29"
+  },
+  {
+    "color": "#11ff00",
+    "createdAt": "2025-12-03T16:18:30.846Z",
+    "dependencies": [
+      "1764778471205"
+    ],
+    "description": "Check if NoSQL databases have issues of saving in the same folder like sql databases had issues with.",
+    "endDate": "2025-11-29",
+    "id": "1764778710846",
+    "isOngoing": false,
+    "name": "Checking For Same Bug As SQLite",
     "priority": "low",
     "progress": 100,
     "startDate": "2025-11-29"
