@@ -852,30 +852,34 @@
             current.setHours(0, 0, 0, 0);
         }
 
+        // Calculate total timeline width
+        const totalDays = Math.ceil((maxDate - minDate) / 86400000) + 1;
+        const timelineWidth = totalDays * dayWidth;
+
         let html = '<div class="timeline-header">';
         html += '<div class="task-labels"><strong>Tasks</strong></div>';
-html += '<div class="timeline-grid">';
+        html += `<div class="timeline-grid" style="min-width:${timelineWidth}px;">`;
 
-// Month headers
-html += '<div class="month-headers">';
-months.forEach(m => {
-    html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
-});
-html += '</div>';
+        // Month headers
+        html += '<div class="month-headers">';
+        months.forEach(m => {
+            html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
+        });
+        html += '</div>';
 
-// Day headers  
-html += '<div class="day-headers">';
-let dayCounter = new Date(minDate);
-dayCounter.setHours(0, 0, 0, 0);
+        // Day headers  
+        html += '<div class="day-headers">';
+        let dayCounter = new Date(minDate);
+        dayCounter.setHours(0, 0, 0, 0);
 
-while (dayCounter <= maxDate) {
-    html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
-    dayCounter.setDate(dayCounter.getDate() + 1);
-}
-html += '</div>';
+        while (dayCounter <= maxDate) {
+            html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
+            dayCounter.setDate(dayCounter.getDate() + 1);
+        }
+        html += '</div>';
 
-html += '</div>';  // Close timeline-grid
-html += '</div>';  // Close timeline-header
+        html += '</div>';  // Close timeline-grid
+        html += '</div>';  // Close timeline-header
 
         const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
 
@@ -904,7 +908,7 @@ html += '</div>';  // Close timeline-header
             }
             
             html += '</div>';
-            html += '<div class="task-timeline">';
+            html += `<div class="task-timeline" style="min-width:${timelineWidth}px;">`;
             
             // Calculate the date-based width
             const dateBasedWidth = duration * dayWidth;
@@ -1178,30 +1182,34 @@ function buildGanttHTML(tasksSubset) {
         current.setHours(0, 0, 0, 0);
     }
 
+    // Calculate total timeline width
+    const totalDays = Math.ceil((maxDate - minDate) / 86400000) + 1;
+    const timelineWidth = totalDays * dayWidth;
+
     let html = '<div class="timeline-header">';
     html += '<div class="task-labels"><strong>Tasks</strong></div>';
-html += '<div class="timeline-grid">';
+    html += `<div class="timeline-grid" style="min-width:${timelineWidth}px;">`;
 
-// Month headers
-html += '<div class="month-headers">';
-months.forEach(m => {
-    html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
-});
-html += '</div>';
+    // Month headers
+    html += '<div class="month-headers">';
+    months.forEach(m => {
+        html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
+    });
+    html += '</div>';
 
-// Day headers  
-html += '<div class="day-headers">';
-let dayCounter = new Date(minDate);
-dayCounter.setHours(0, 0, 0, 0);
+    // Day headers  
+    html += '<div class="day-headers">';
+    let dayCounter = new Date(minDate);
+    dayCounter.setHours(0, 0, 0, 0);
 
-while (dayCounter <= maxDate) {
-    html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
-    dayCounter.setDate(dayCounter.getDate() + 1);
-}
-html += '</div>';
+    while (dayCounter <= maxDate) {
+        html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
+        dayCounter.setDate(dayCounter.getDate() + 1);
+    }
+    html += '</div>';
 
-html += '</div>';  // Close timeline-grid
-html += '</div>';  // Close timeline-header
+    html += '</div>';  // Close timeline-grid
+    html += '</div>';  // Close timeline-header
 
     const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
 
@@ -1229,7 +1237,7 @@ html += '</div>';  // Close timeline-header
         }
         
         html += '</div>';
-        html += '<div class="task-timeline">';
+        html += `<div class="task-timeline" style="min-width:${timelineWidth}px;">`;
         html += `<div class="task-bar ${task.isOngoing ? 'ongoing' : ''}" 
                  style="left:${startOffset * dayWidth}px; width:${dateBasedWidth}px; background:${task.color};">`;
         html += `<div class="progress-bar" style="width:${task.progress}%"></div>`;
