@@ -242,6 +242,19 @@
     "startDate": "2025-11-29"
   },
   {
+    "id": "1764854700174",
+    "name": "Deciding The Topic",
+    "description": "Researching and deciding the topic, performing feasibility studies and requirement analysis.",
+    "startDate": "2025-11-10",
+    "endDate": "2025-11-12",
+    "isOngoing": false,
+    "color": "#00ff2a",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-04T13:25:00.174Z"
+  },
+  {
     "color": "#00ff40",
     "createdAt": "2025-12-03T16:20:07.977Z",
     "dependencies": [
@@ -560,18 +573,5 @@
     "priority": "low",
     "dependencies": [],
     "createdAt": "2025-12-04T13:16:45.696Z"
-  },
-  {
-    "id": "1764854700174",
-    "name": "Deciding The Topic",
-    "description": "Researching and deciding the topic, performing feasibility studies and requirement analysis.",
-    "startDate": "2025-11-10",
-    "endDate": "2025-11-12",
-    "isOngoing": false,
-    "color": "#00ff2a",
-    "progress": 100,
-    "priority": "critical",
-    "dependencies": [],
-    "createdAt": "2025-12-04T13:25:00.174Z"
   }
 ]
