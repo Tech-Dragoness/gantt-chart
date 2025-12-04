@@ -298,7 +298,7 @@
     "startDate": "2025-11-29"
   },
   {
-    "color": "#a42323",
+    "color": "#37ff00",
     "createdAt": "2025-12-03T15:51:49.084Z",
     "dependencies": [],
     "description": "Added tabs for plsql on PostgreSQL that supports it",
