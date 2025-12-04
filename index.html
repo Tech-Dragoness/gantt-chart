@@ -842,7 +842,18 @@
         months.forEach(m => {
             html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
         });
-        html += '</div></div></div>';
+        html += '</div>';
+
+        // Add day headers
+        html += '<div class="day-headers">';
+        let dayCounter = new Date(minDate);
+        while (dayCounter <= maxDate) {
+            html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
+            dayCounter.setDate(dayCounter.getDate() + 1);
+        }
+        html += '</div>';
+
+        html += '</div></div>';
 
         const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
 
@@ -1097,18 +1108,21 @@ async function downloadAsMultipleImages() {
 function buildGanttHTML(tasksSubset) {
     if (tasksSubset.length === 0) return '<div class="empty-state">No tasks</div>';
     
-    const allDates = tasksSubset.flatMap(t => {
+    // CRITICAL: Use the SAME date range calculation as the main chart
+    // This ensures consistent spacing across all exported images
+    const allDates = tasks.flatMap(t => {  // Use 'tasks', not 'tasksSubset'!
         const dates = [new Date(t.startDate)];
         if (!t.isOngoing && t.endDate) dates.push(new Date(t.endDate));
         return dates;
     });
     const minDate = new Date(Math.min(...allDates));
-    const maxDate = tasksSubset.some(t => t.isOngoing) ? new Date() : new Date(Math.max(...allDates));
+    const maxDate = tasks.some(t => t.isOngoing) ? new Date() : new Date(Math.max(...allDates));
     
     minDate.setDate(minDate.getDate() - 7);
     maxDate.setDate(maxDate.getDate() + 14);
     const dayWidth = 30;
 
+    // Build months array - same as main chart
     const months = [];
     let current = new Date(minDate);
     current.setDate(1);
@@ -1132,7 +1146,18 @@ function buildGanttHTML(tasksSubset) {
     months.forEach(m => {
         html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
     });
-    html += '</div></div></div>';
+    html += '</div>';
+    
+    // Add day headers
+    html += '<div class="day-headers">';
+    let dayCounter = new Date(minDate);
+    while (dayCounter <= maxDate) {
+        html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
+        dayCounter.setDate(dayCounter.getDate() + 1);
+    }
+    html += '</div>';
+    
+    html += '</div></div>';
 
     const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
 
