@@ -853,23 +853,28 @@ while (daysProcessed < totalDays) {
 
         let html = '<div class="timeline-header">';
         html += '<div class="task-labels"><strong>Tasks</strong></div>';
-        html += '<div class="timeline-grid">';
-        html += '<div class="month-headers">';
-        months.forEach(m => {
-            html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
-        });
-        html += '</div>';
+html += '<div class="timeline-grid">';
 
-        // Add day headers - iterate through actual visible days
+// Month headers
+html += '<div class="month-headers">';
+months.forEach(m => {
+    html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
+});
+html += '</div>';
+
+// Day headers  
 html += '<div class="day-headers">';
-for (let i = 0; i < totalDays; i++) {
-    const currentDay = new Date(minDate);
-    currentDay.setDate(currentDay.getDate() + i);
-    html += `<div class="day-header" style="width:${dayWidth}px">${currentDay.getDate()}</div>`;
+let dayCounter = new Date(minDate);
+dayCounter.setHours(0, 0, 0, 0);
+
+while (dayCounter <= maxDate) {
+    html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
+    dayCounter.setDate(dayCounter.getDate() + 1);
 }
 html += '</div>';
 
-        html += '</div></div>';
+html += '</div>';  // Close timeline-grid
+html += '</div>';  // Close timeline-header
 
         const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
 
@@ -1172,23 +1177,28 @@ while (daysProcessed < totalDays) {
 
     let html = '<div class="timeline-header">';
     html += '<div class="task-labels"><strong>Tasks</strong></div>';
-    html += '<div class="timeline-grid">';
-    html += '<div class="month-headers">';
-    months.forEach(m => {
-        html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
-    });
-    html += '</div>';
-    
-    // Add day headers - iterate through actual visible days
+html += '<div class="timeline-grid">';
+
+// Month headers
+html += '<div class="month-headers">';
+months.forEach(m => {
+    html += `<div class="month-header" style="width:${m.days * dayWidth}px">${m.name}</div>`;
+});
+html += '</div>';
+
+// Day headers  
 html += '<div class="day-headers">';
-for (let i = 0; i < totalDays; i++) {
-    const currentDay = new Date(minDate);
-    currentDay.setDate(currentDay.getDate() + i);
-    html += `<div class="day-header" style="width:${dayWidth}px">${currentDay.getDate()}</div>`;
+let dayCounter = new Date(minDate);
+dayCounter.setHours(0, 0, 0, 0);
+
+while (dayCounter <= maxDate) {
+    html += `<div class="day-header" style="width:${dayWidth}px">${dayCounter.getDate()}</div>`;
+    dayCounter.setDate(dayCounter.getDate() + 1);
 }
 html += '</div>';
-    
-    html += '</div></div>';
+
+html += '</div>';  // Close timeline-grid
+html += '</div>';  // Close timeline-header
 
     const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
 
