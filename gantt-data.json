@@ -299,19 +299,6 @@
   },
   {
     "color": "#37ff00",
-    "createdAt": "2025-12-03T15:50:36.896Z",
-    "dependencies": [],
-    "description": "Fixed a bug in regards to MySQL where credentials kept failing (Strongly suspect issue with personal xammp, therefore installed MySQL separately and testing on it, all issues seem to be resolved))",
-    "endDate": "2025-11-30",
-    "id": "1764777036896",
-    "isOngoing": false,
-    "name": "Fixing MySQL Credentials Bug",
-    "priority": "high",
-    "progress": 100,
-    "startDate": "2025-11-29"
-  },
-  {
-    "color": "#37ff00",
     "createdAt": "2025-12-03T15:51:49.084Z",
     "dependencies": [],
     "description": "Added tabs for plsql on PostgreSQL that supports it",
@@ -371,6 +358,19 @@
     "id": "1764780127621",
     "isOngoing": false,
     "name": "Fix Column Rename Issue",
+    "priority": "high",
+    "progress": 100,
+    "startDate": "2025-11-29"
+  },
+  {
+    "color": "#37ff00",
+    "createdAt": "2025-12-03T15:50:36.896Z",
+    "dependencies": [],
+    "description": "Fixed a bug in regards to MySQL where credentials kept failing (Strongly suspect issue with personal xammp, therefore installed MySQL separately and testing on it, all issues seem to be resolved))",
+    "endDate": "2025-11-30",
+    "id": "1764777036896",
+    "isOngoing": false,
+    "name": "Fixing MySQL Credentials Bug",
     "priority": "high",
     "progress": 100,
     "startDate": "2025-11-29"
@@ -480,19 +480,6 @@
     "startDate": "2025-11-30"
   },
   {
-    "color": "#00ff33",
-    "createdAt": "2025-12-03T16:06:22.384Z",
-    "dependencies": [],
-    "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
-    "endDate": "2025-12-02",
-    "id": "1764777982384",
-    "isOngoing": false,
-    "name": "Adding Support For Charts for Tables/Collections",
-    "priority": "low",
-    "progress": 100,
-    "startDate": "2025-12-01"
-  },
-  {
     "color": "#00ff11",
     "createdAt": "2025-12-03T16:53:09.850Z",
     "dependencies": [],
@@ -504,6 +491,19 @@
     "priority": "critical",
     "progress": 100,
     "startDate": "2025-11-30"
+  },
+  {
+    "color": "#00ff33",
+    "createdAt": "2025-12-03T16:06:22.384Z",
+    "dependencies": [],
+    "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
+    "endDate": "2025-12-02",
+    "id": "1764777982384",
+    "isOngoing": false,
+    "name": "Adding Support For Charts for Tables/Collections",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-12-01"
   },
   {
     "color": "#00ff2a",
