@@ -234,7 +234,7 @@
     "endDate": "2025-11-27",
     "id": "1764778710846",
     "isOngoing": false,
-    "name": "Checking For Same Bug As SQLite",
+    "name": "Checking For Same Bug As SQLite In NoSQL DBs",
     "priority": "low",
     "progress": 100,
     "startDate": "2025-11-27"
