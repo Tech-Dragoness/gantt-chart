@@ -181,19 +181,6 @@
     "startDate": "2025-11-26"
   },
   {
-    "color": "#37ff00",
-    "createdAt": "2025-12-03T15:51:49.084Z",
-    "dependencies": [],
-    "description": "Added tabs for plsql on PostgreSQL that supports it",
-    "endDate": "2025-11-28",
-    "id": "1764777109084",
-    "isOngoing": false,
-    "name": "Adding PL/SQL Support For Supported Databases",
-    "priority": "critical",
-    "progress": 100,
-    "startDate": "2025-11-26"
-  },
-  {
     "color": "#59ff00",
     "createdAt": "2025-12-03T15:39:48.660Z",
     "dependencies": [
@@ -223,6 +210,19 @@
     "priority": "low",
     "progress": 100,
     "startDate": "2025-11-27"
+  },
+  {
+    "color": "#37ff00",
+    "createdAt": "2025-12-03T15:51:49.084Z",
+    "dependencies": [],
+    "description": "Added tabs for plsql on PostgreSQL that supports it",
+    "endDate": "2025-11-28",
+    "id": "1764777109084",
+    "isOngoing": false,
+    "name": "Adding PL/SQL Support For Supported Databases",
+    "priority": "critical",
+    "progress": 100,
+    "startDate": "2025-11-26"
   },
   {
     "color": "#3bf761",
