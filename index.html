@@ -198,16 +198,9 @@
         }
 
         .chart-controls {
-    display: flex;
-    gap: 10px;
-    position: sticky;           /* ADDED: Make sticky */
-    top: 20px;                  /* ADDED: Stick 20px from top when scrolling */
-    z-index: 200;               /* ADDED: Stay above everything */
-    background: white;          /* ADDED: Solid background */
-    padding: 10px;              /* ADDED: Some padding */
-    border-radius: 8px;         /* ADDED: Rounded corners */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* ADDED: Shadow for visibility */
-}
+            display: flex;
+            gap: 10px;
+        }
 
         #ganttChart {
             min-width: 800px;
@@ -220,7 +213,7 @@
         }
 
         .task-labels {
-    width: 400px;              /* CHANGED: from 250px to 350px */
+    width: 250px;
     flex-shrink: 0;
     padding: 12px;
     border-right: 2px solid #e5e7eb;
@@ -279,13 +272,13 @@
         }
 
         .task-info {
-    width: 400px;              /* CHANGED: from 250px to 350px */
+    width: 250px;
     padding: 12px;
     border-right: 2px solid #e5e7eb;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: relative;
+    position: relative;  /* CHANGED: Back to relative for drag handle positioning */
     background: white;
 }
 
@@ -494,17 +487,10 @@
         }
 
         @media print {
-    .btn, .chart-controls, .task-actions {
-        display: none !important;
-    }
-}
-
-/* ADDED: Hide controls when exporting */
-.chart-container.exporting .chart-controls,
-.exporting .chart-controls {
-    display: none !important;
-    visibility: hidden !important;
-}
+            .btn, .chart-controls, .task-actions {
+                display: none !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1145,17 +1131,13 @@ tempContainer.style.boxSizing = 'border-box'; // ADDED: Include padding in size
 
 console.log(`🖼️ Creating image ${i + 1} of ${totalImages} for tasks ${startIdx} to ${endIdx}`);
             
-            // Build the HTML for this subset WITHOUT controls
-let html = '<div class="chart-header">';
-html += `<h2>Project Timeline (Part ${i + 1} of ${totalImages})</h2>`;
-// NO chart-controls div here - controls excluded from export
-html += '</div>';
-html += buildGanttHTML(tasksSubset);
-
-tempContainer.innerHTML = html;
-tempContainer.classList.add('exporting'); // ADDED: Mark as exporting
-
-console.log('🎨 Built HTML without controls for export');
+            // Build the HTML for this subset
+            let html = '<div class="chart-header">';
+            html += `<h2>Project Timeline (Part ${i + 1} of ${totalImages})</h2>`;
+            html += '</div>';
+            html += buildGanttHTML(tasksSubset);
+            
+            tempContainer.innerHTML = html;
             document.body.appendChild(tempContainer);
             
             // Capture this section
@@ -1198,13 +1180,6 @@ const canvas = await html2canvas(tempContainer, {
         clonedContainer.style.display = 'block';
     }
     
-    // ADDED: Hide all controls in cloned document
-    const controls = clonedDoc.querySelectorAll('.chart-controls, .btn, .task-actions');
-    controls.forEach(ctrl => {
-        ctrl.style.display = 'none';
-        ctrl.style.visibility = 'hidden';
-    });
-    
     // Ensure timeline header and rows display correctly
     const timelineHeader = clonedDoc.querySelector('.timeline-header');
     if (timelineHeader) {
@@ -1219,7 +1194,7 @@ const canvas = await html2canvas(tempContainer, {
         row.style.flexDirection = 'row';
     });
     
-    console.log('🎨 Applied background, layout fixes, and hid controls in cloned document');
+    console.log('🎨 Applied background and layout fixes to cloned document');
 }
 });
 console.log(`✅ Canvas created: ${canvas.width}x${canvas.height}px`);
