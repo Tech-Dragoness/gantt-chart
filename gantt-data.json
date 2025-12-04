@@ -350,17 +350,17 @@
     "startDate": "2025-11-28"
   },
   {
-    "color": "#00ff33",
-    "createdAt": "2025-12-03T16:06:22.384Z",
+    "color": "#51f73b",
+    "createdAt": "2025-12-03T16:49:49.522Z",
     "dependencies": [],
-    "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
-    "endDate": "2025-12-02",
-    "id": "1764777982384",
+    "description": "Added a credential entry page for DBs like MySQL and PostgreSQL that needs credentials to connect and uses keyring to store these credentials for further access",
+    "endDate": "2025-11-28",
+    "id": "1764780589522",
     "isOngoing": false,
-    "name": "Adding Support For Charts for Tables/Collections",
-    "priority": "low",
+    "name": "Adding Credential Page",
+    "priority": "critical",
     "progress": 100,
-    "startDate": "2025-12-01"
+    "startDate": "2025-11-28"
   },
   {
     "color": "#48b828",
@@ -389,6 +389,19 @@
     "startDate": "2025-11-29"
   },
   {
+    "color": "#00ff33",
+    "createdAt": "2025-12-03T16:06:22.384Z",
+    "dependencies": [],
+    "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
+    "endDate": "2025-12-02",
+    "id": "1764777982384",
+    "isOngoing": false,
+    "name": "Adding Support For Charts for Tables/Collections",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-12-01"
+  },
+  {
     "color": "#1bc55c",
     "createdAt": "2025-12-03T16:10:24.368Z",
     "dependencies": [],
@@ -400,19 +413,6 @@
     "priority": "critical",
     "progress": 100,
     "startDate": "2025-11-29"
-  },
-  {
-    "color": "#51f73b",
-    "createdAt": "2025-12-03T16:49:49.522Z",
-    "dependencies": [],
-    "description": "Added a credential entry page for DBs like MySQL and PostgreSQL that needs credentials to connect and uses keyring to store these credentials for further access",
-    "endDate": "2025-11-28",
-    "id": "1764780589522",
-    "isOngoing": false,
-    "name": "Adding Credential Page",
-    "priority": "critical",
-    "progress": 100,
-    "startDate": "2025-11-28"
   },
   {
     "color": "#351178",
