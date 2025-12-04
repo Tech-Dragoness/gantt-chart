@@ -311,7 +311,7 @@
     "startDate": "2025-11-26"
   },
   {
-    "color": "#6224d6",
+    "color": "#00ff40",
     "createdAt": "2025-12-03T16:01:10.510Z",
     "dependencies": [],
     "description": "Added triggers tab on PostgreSQL, MySQL and SQLite which supports it",
@@ -324,7 +324,7 @@
     "startDate": "2025-11-28"
   },
   {
-    "color": "#e396e8",
+    "color": "#00ff33",
     "createdAt": "2025-12-03T16:06:22.384Z",
     "dependencies": [],
     "description": "Add charts like pie chart or bar graph to view the data in a table/collection",
