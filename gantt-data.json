@@ -1,5 +1,18 @@
 [
   {
+    "id": "1764854700174",
+    "name": "Deciding The Topic",
+    "description": "Researching and deciding the topic, performing feasibility studies and requirement analysis.",
+    "startDate": "2025-11-10",
+    "endDate": "2025-11-12",
+    "isOngoing": false,
+    "color": "#00ff2a",
+    "progress": 100,
+    "priority": "critical",
+    "dependencies": [],
+    "createdAt": "2025-12-04T13:25:00.174Z"
+  },
+  {
     "assignee": "",
     "color": "#00ff55",
     "createdAt": "2025-12-03T14:25:47.186Z",
@@ -242,19 +255,6 @@
     "startDate": "2025-11-29"
   },
   {
-    "id": "1764854700174",
-    "name": "Deciding The Topic",
-    "description": "Researching and deciding the topic, performing feasibility studies and requirement analysis.",
-    "startDate": "2025-11-10",
-    "endDate": "2025-11-12",
-    "isOngoing": false,
-    "color": "#00ff2a",
-    "progress": 100,
-    "priority": "critical",
-    "dependencies": [],
-    "createdAt": "2025-12-04T13:25:00.174Z"
-  },
-  {
     "color": "#00ff40",
     "createdAt": "2025-12-03T16:20:07.977Z",
     "dependencies": [
@@ -337,6 +337,19 @@
     "startDate": "2025-11-28"
   },
   {
+    "color": "#04ff00",
+    "createdAt": "2025-12-03T16:48:16.271Z",
+    "dependencies": [],
+    "description": "Add search bar to search db names and table names",
+    "endDate": "2025-11-29",
+    "id": "1764780496271",
+    "isOngoing": false,
+    "name": "Add Search Bar",
+    "priority": "low",
+    "progress": 100,
+    "startDate": "2025-11-28"
+  },
+  {
     "color": "#00ff33",
     "createdAt": "2025-12-03T16:06:22.384Z",
     "dependencies": [],
@@ -387,19 +400,6 @@
     "priority": "critical",
     "progress": 100,
     "startDate": "2025-11-29"
-  },
-  {
-    "color": "#04ff00",
-    "createdAt": "2025-12-03T16:48:16.271Z",
-    "dependencies": [],
-    "description": "Add search bar to search db names and table names",
-    "endDate": "2025-11-29",
-    "id": "1764780496271",
-    "isOngoing": false,
-    "name": "Add Search Bar",
-    "priority": "low",
-    "progress": 100,
-    "startDate": "2025-11-28"
   },
   {
     "color": "#51f73b",
