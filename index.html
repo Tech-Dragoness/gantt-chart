@@ -218,9 +218,9 @@
     padding: 12px;
     border-right: 2px solid #e5e7eb;
     background: white;
-    position: sticky;
+    position: sticky;            /* Keep sticky for scrolling */
     left: 0;
-    z-index: 10;
+    z-index: 100;                /* CHANGED: Higher z-index to stay on top */
     display: flex;
     align-items: center;
     font-weight: 600;
@@ -275,14 +275,17 @@
         }
 
         .task-info {
-            width: 250px;
-            padding: 12px;
-            border-right: 2px solid #e5e7eb;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            position: relative;
-        }
+    width: 250px;
+    padding: 12px;
+    border-right: 2px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: sticky;            /* ADDED: Make task info sticky too */
+    left: 0;                     /* ADDED: Pin to left */
+    background: white;           /* ADDED: Solid background */
+    z-index: 50;                 /* ADDED: Layer above timeline but below header */
+}
 
         .drag-handle {
             position: absolute;
@@ -1118,16 +1121,18 @@ async function downloadAsMultipleImages() {
             const tasksSubset = tasks.slice(startIdx, endIdx);
             
             // FIXED: Create a temporary container with full width
+// FIXED: Create a temporary container with full width and proper background
 const tempContainer = document.createElement('div');
 tempContainer.className = 'chart-container';
 tempContainer.style.position = 'absolute';
 tempContainer.style.left = '-9999px';
 tempContainer.style.top = '0';
-tempContainer.style.width = 'auto'; // CHANGED: Allow full width
-tempContainer.style.minWidth = '1400px'; // ADDED: Ensure minimum width
-tempContainer.style.background = 'white';
+tempContainer.style.width = 'auto';
+tempContainer.style.minWidth = '1400px';
+tempContainer.style.background = '#ffffff'; // CHANGED: Explicit white
 tempContainer.style.padding = '30px';
-tempContainer.style.overflow = 'visible'; // ADDED: Show full content
+tempContainer.style.overflow = 'visible';
+tempContainer.style.boxSizing = 'border-box'; // ADDED: Include padding in size
 
 console.log(`🖼️ Creating image ${i + 1} of ${totalImages} for tasks ${startIdx} to ${endIdx}`);
             
@@ -1142,26 +1147,45 @@ console.log(`🖼️ Creating image ${i + 1} of ${totalImages} for tasks ${start
             
             // Capture this section
             // FIXED: Capture this section with full width
-const ganttElement = tempContainer.querySelector('#ganttChart') || tempContainer;
-const fullWidth = ganttElement.scrollWidth + 60;
+// FIXED: Capture this section with full width and proper background
+// Wait a moment for styles to apply
+await new Promise(resolve => setTimeout(resolve, 100));
+
+const ganttElement = tempContainer.querySelector('.timeline-header') || tempContainer;
+const taskRows = tempContainer.querySelectorAll('.task-row');
+const fullWidth = Math.max(
+    ganttElement.scrollWidth + 60,
+    tempContainer.scrollWidth,
+    1400 // Minimum width
+);
 const fullHeight = tempContainer.scrollHeight;
 
 console.log(`📏 Capture dimensions: ${fullWidth}x${fullHeight}px`);
+console.log(`📊 Task rows in this image: ${taskRows.length}`);
 
 const canvas = await html2canvas(tempContainer, {
     scale: 2,
-    backgroundColor: '#ffffff',
+    backgroundColor: '#ffffff', // Solid white background
     logging: false,
     useCORS: true,
     allowTaint: true,
-    width: fullWidth, // ADDED: Capture full width
-    height: fullHeight, // ADDED: Capture full height
-    scrollX: 0, // ADDED
-    scrollY: 0, // ADDED
-    windowWidth: fullWidth, // ADDED
-    windowHeight: fullHeight // ADDED
+    width: fullWidth,
+    height: fullHeight,
+    scrollX: 0,
+    scrollY: 0,
+    windowWidth: fullWidth,
+    windowHeight: fullHeight,
+    onclone: (clonedDoc) => {
+        // ADDED: Force background on cloned element
+        const clonedContainer = clonedDoc.querySelector('.chart-container');
+        if (clonedContainer) {
+            clonedContainer.style.background = '#ffffff';
+            clonedContainer.style.minHeight = fullHeight + 'px';
+            clonedContainer.style.minWidth = fullWidth + 'px';
+        }
+        console.log('🎨 Applied background to cloned document');
+    }
 });
-
 console.log(`✅ Canvas created: ${canvas.width}x${canvas.height}px`);
             
             // Convert to blob and add to zip
@@ -1283,14 +1307,14 @@ console.log('🖼️ Export date range:', {
     const priorityEmoji = { low: '🟢', medium: '🟡', high: '🟠', critical: '🔴' };
 
     tasksSubset.forEach((task) => {
-        const startDate = new Date(task.startDate);
-        const endDate = task.isOngoing ? new Date() : new Date(task.endDate || task.startDate);
-        const startOffset = Math.floor((startDate - minDate) / 86400000);
-        const duration = Math.ceil((endDate - startDate) / 86400000) + 1;
-        const dateBasedWidth = duration * dayWidth;
+    const startDate = new Date(task.startDate);
+    const endDate = task.isOngoing ? new Date() : new Date(task.endDate || task.startDate);
+    const startOffset = Math.floor((startDate - minDate) / 86400000);
+    const duration = Math.ceil((endDate - startDate) / 86400000) + 1;
+    const dateBasedWidth = duration * dayWidth;
 
-        html += '<div class="task-row">';
-        html += '<div class="task-info">';
+    html += '<div class="task-row">';
+    html += '<div class="task-info" style="position: sticky; left: 0; background: white; z-index: 50;">'; // ADDED inline styles for export
         html += `<div class="task-name">${priorityEmoji[task.priority] || ''} ${task.name}</div>`;
         html += `<div class="task-dates">${formatDate(task.startDate)} → ${task.isOngoing ? 'Ongoing' : formatDate(task.endDate || '')}</div>`;
         
