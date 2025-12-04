@@ -15,7 +15,7 @@
   },
   {
     "assignee": "",
-    "color": "#f43bf7",
+    "color": "#04ff00",
     "createdAt": "2025-12-03T15:09:56.257Z",
     "dependencies": [],
     "description": "Added SQL and NoSQL databases differentiation and context switching between them.",
