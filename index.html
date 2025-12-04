@@ -213,14 +213,11 @@
         }
 
         .task-labels {
-    width: 250px;                 /* same width as your .task-info cells */
-    flex-shrink: 0;               /* never shrink */
+    width: 250px;
+    flex-shrink: 0;
     padding: 12px;
     border-right: 2px solid #e5e7eb;
     background: white;
-    position: sticky;            /* Keep sticky for scrolling */
-    left: 0;
-    z-index: 100;                /* CHANGED: Higher z-index to stay on top */
     display: flex;
     align-items: center;
     font-weight: 600;
@@ -281,10 +278,8 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    position: sticky;            /* ADDED: Make task info sticky too */
-    left: 0;                     /* ADDED: Pin to left */
-    background: white;           /* ADDED: Solid background */
-    z-index: 50;                 /* ADDED: Layer above timeline but below header */
+    position: relative;  /* CHANGED: Back to relative for drag handle positioning */
+    background: white;
 }
 
         .drag-handle {
@@ -1176,15 +1171,31 @@ const canvas = await html2canvas(tempContainer, {
     windowWidth: fullWidth,
     windowHeight: fullHeight,
     onclone: (clonedDoc) => {
-        // ADDED: Force background on cloned element
-        const clonedContainer = clonedDoc.querySelector('.chart-container');
-        if (clonedContainer) {
-            clonedContainer.style.background = '#ffffff';
-            clonedContainer.style.minHeight = fullHeight + 'px';
-            clonedContainer.style.minWidth = fullWidth + 'px';
-        }
-        console.log('🎨 Applied background to cloned document');
+    // Force proper layout and background on cloned element
+    const clonedContainer = clonedDoc.querySelector('.chart-container');
+    if (clonedContainer) {
+        clonedContainer.style.background = '#ffffff';
+        clonedContainer.style.minHeight = fullHeight + 'px';
+        clonedContainer.style.minWidth = fullWidth + 'px';
+        clonedContainer.style.display = 'block';
     }
+    
+    // Ensure timeline header and rows display correctly
+    const timelineHeader = clonedDoc.querySelector('.timeline-header');
+    if (timelineHeader) {
+        timelineHeader.style.display = 'flex';
+        timelineHeader.style.flexDirection = 'row';
+    }
+    
+    // Fix all task rows
+    const taskRows = clonedDoc.querySelectorAll('.task-row');
+    taskRows.forEach(row => {
+        row.style.display = 'flex';
+        row.style.flexDirection = 'row';
+    });
+    
+    console.log('🎨 Applied background and layout fixes to cloned document');
+}
 });
 console.log(`✅ Canvas created: ${canvas.width}x${canvas.height}px`);
             
@@ -1314,7 +1325,7 @@ console.log('🖼️ Export date range:', {
     const dateBasedWidth = duration * dayWidth;
 
     html += '<div class="task-row">';
-    html += '<div class="task-info" style="position: sticky; left: 0; background: white; z-index: 50;">'; // ADDED inline styles for export
+    html += '<div class="task-info">'; // REMOVED inline styles
         html += `<div class="task-name">${priorityEmoji[task.priority] || ''} ${task.name}</div>`;
         html += `<div class="task-dates">${formatDate(task.startDate)} → ${task.isOngoing ? 'Ongoing' : formatDate(task.endDate || '')}</div>`;
         
